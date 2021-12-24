@@ -14,7 +14,13 @@ int j;
 int k;
 int n;
 
-void intro_message(int attempts)
+int end_game()
+{
+    return 0;
+}
+
+
+void intro_message(int* num_attempts)
 {
     printf("---------------------------------------------------------\n");
     printf("                   My Mastermind Game                    \n");
@@ -23,7 +29,7 @@ void intro_message(int attempts)
     
     printf("Let's play a game! I'm thinking of a four digit code.\n");
     printf("Can you guess the digits in the exact order?\n");
-    printf("I'll give you %i attempts\n", attempts);
+    printf("I'll give you %i attempts\n", *num_attempts);
     printf("\n");
 }
 
@@ -42,8 +48,8 @@ char* get_code(int argc, char* argv[])
             if (ch == DASH && next_ch == C)
             {
                 
-                printf("Game master generated code: %s\n", code);
-                printf("\n");
+                // printf("Game master generated code: %s\n", code);
+                // printf("\n");
                 return code;
             }
         }
@@ -111,10 +117,10 @@ void win_message(char* secret_code)
     printf("********************************************\n");
     printf("You correctly guessed the secret code: %s\n", secret_code);
     printf("\n");
-    _Exit(0);
+    return;
 }
 
-void compare_code(char* secret_code, int length, char* your_guess)
+int compare_code(int* num_attempts, char* secret_code, int length, char* your_guess)
 {
     int well_placed_count = 0;
     int misplaced_count = 0;
@@ -139,8 +145,12 @@ void compare_code(char* secret_code, int length, char* your_guess)
     if (well_placed_count == 4)
     {
         win_message(secret_code);
+        *num_attempts = 0;
+        return *num_attempts;
     }
     printf("\n");
+
+    return 0;
 }
 
 void game_over_message(char* secret_code)
@@ -159,16 +169,21 @@ void attempts_message(i)
     printf("Number of attempts left: %i\n", i);
 }
 
-void play_round(int attempts, char* secret_code, int length, char* your_guess)
+void play_round(int* num_attempts, char* secret_code, int length, char* your_guess)
 {
-    for (i = attempts; i >= 0; i--)
+    for (i = *num_attempts; i >= 0; i--)
     {    
         attempts_message(i);
 
         if (i > 0)
         {
             your_guess = get_guess();
-            compare_code(secret_code, length, your_guess);
+            *num_attempts = compare_code(num_attempts, secret_code, length, your_guess);
+
+            if (*num_attempts == 0)
+            {
+                break;
+            }
         }
         if (i == 0)
         {
@@ -179,19 +194,22 @@ void play_round(int attempts, char* secret_code, int length, char* your_guess)
 
 int main(int argc, char* argv[])
 {
-    int attempts;
+    char* txt_attempts;
+    int* num_attempts;
     char* secret_code;
     int length;
     char* your_guess;
     
-    attempts = atoi(get_attempts(argc, argv));
+    txt_attempts = get_attempts(argc, argv);
+    num_attempts = malloc(sizeof(int));
+    *num_attempts = atoi(txt_attempts);
     secret_code = get_code(argc, argv);
     length = strlen(secret_code);
     your_guess = "";
     
-    intro_message(attempts);
+    intro_message(num_attempts);
 
-    play_round(attempts, secret_code, length, your_guess);
+    play_round(num_attempts, secret_code, length, your_guess);
     
     return 0;
 }
