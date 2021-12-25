@@ -33,6 +33,15 @@ void intro_message(int* num_attempts)
     printf("\n");
 }
 
+void c_flag_error_message()
+{
+    printf("Oops! You need to fix your command line entry.\n");
+    printf("The numbers you enter for your secret code after the '-c' flag\n");
+    printf("must be four digits long using numbers between 0 and 7.\n");
+    printf("(ex: -c 1234)\n");
+    printf("\n");
+}
+
 char* get_code(int argc, char* argv[])
 {
     for (i = 0; i < argc; i ++)
@@ -47,9 +56,20 @@ char* get_code(int argc, char* argv[])
 
             if (ch == DASH && next_ch == C)
             {
-                
-                // printf("Game master generated code: %s\n", code);
-                // printf("\n");
+                if (strlen(code) != 4)
+                {
+                    c_flag_error_message();
+                    exit(0);
+                }
+
+                for (k = 0; k < (int)strlen(code); k++)
+                {
+                    if (code[k] <= 48 || code[k] >= 55)
+                    {
+                        c_flag_error_message();
+                        exit(0);
+                    }
+                }
                 return code;
             }
         }
