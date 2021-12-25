@@ -150,7 +150,7 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
     }
     printf("\n");
 
-    return 0;
+    return *num_attempts;
 }
 
 void game_over_message(char* secret_code)
