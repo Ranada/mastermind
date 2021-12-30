@@ -42,10 +42,10 @@ void intro_message(int* num_attempts)
 
 void c_flag_error_message()
 {
-    printf("Oops! You need to fix your command line entry.\n");
+    printf("Game master: \"Oops! You need to fix your command line entry.\n");
     printf("The numbers you enter for your secret code after the '-c' flag\n");
     printf("must be four digits long using numbers between 0 and 7.\n");
-    printf("(ex: -c 1234)\n");
+    printf("(ex: -c 1234)\"\n");
     printf("\n");
 }
 
@@ -74,7 +74,7 @@ char* get_code(int argc, char* argv[])
                     if (code[k] < '0' || code[k] > '7')
                     {
                         c_flag_error_message();
-                        exit(0);
+                        break;
                     }
                 }
                 return code;
