@@ -68,7 +68,7 @@ char* get_code(int argc, char* argv[])
 
                 for (k = 0; k < (int)strlen(code); k++)
                 {
-                    if (code[k] < 48 || code[k] > 55)
+                    if (code[k] < '0' || code[k] > '7')
                     {
                         c_flag_error_message();
                         exit(0);
@@ -125,8 +125,18 @@ char* get_guess()
     if (length != 4)
     {
         printf("\n");
-        printf("Oops! You entered %i digits. You need to enter 4 digits. You wasted an attempt. Try again.\n", length);
+        printf("Oops! You entered %i digits. You need to enter 4 digits. You lost an opportunity. Try again.\n", length);
     }
+
+    // for (i = 0; i < length; i++)
+    // {
+    //     if (guess[i] < 48 || guess[i] > 55)
+    //     {
+    //         printf("\n");
+    //         printf("Oops! Some of the characters you entered are not numbers between 0 and 7.\n");
+    //         printf("You lost an opportunity. Try again.\n");
+    //     }
+    // }
     
     printf("\n");
 
