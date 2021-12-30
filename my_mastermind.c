@@ -1,3 +1,7 @@
+// my_mastermind.c
+// Command line game for guessing a secret four digit code
+// Original author: Neil Ranada
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -64,7 +68,7 @@ char* get_code(int argc, char* argv[])
 
                 for (k = 0; k < (int)strlen(code); k++)
                 {
-                    if (code[k] <= 48 || code[k] >= 55)
+                    if (code[k] < 48 || code[k] > 55)
                     {
                         c_flag_error_message();
                         exit(0);
