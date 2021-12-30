@@ -48,9 +48,30 @@ void c_flag_error_message()
     printf("\n");
 }
 
+int* check_argument(char* code, int* continue_game)
+{
+    if (strlen(code) != 4)
+    {
+        *continue_game = FALSE;
+        return continue_game;
+    }
+
+    for (k = 0; k < (int)strlen(code); k++)
+    {
+        if (code[k] < '0' || code[k] > '7')
+        {
+            *continue_game = FALSE;
+            return continue_game;
+            break;
+        }
+    }
+    return continue_game;
+}
+
 char* get_code(int argc, char* argv[])
 {
-    int continue_game = TRUE;
+    int* continue_game = malloc(sizeof(int));
+    *continue_game = TRUE;
     
     for (i = 0; i < argc; i ++)
     {
@@ -64,20 +85,9 @@ char* get_code(int argc, char* argv[])
 
             if (ch == DASH && next_ch == C)
             {
-                if (strlen(code) != 4)
-                {
-                    continue_game = FALSE;
-                }
+                check_argument(code, continue_game);
 
-                for (k = 0; k < (int)strlen(code); k++)
-                {
-                    if (code[k] < '0' || code[k] > '7')
-                    {
-                        continue_game = FALSE;
-                        break;
-                    }
-                }
-                if (continue_game == FALSE)
+                if (*continue_game == FALSE)
                 {
                     c_flag_error_message();
                     exit(0);
