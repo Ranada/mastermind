@@ -12,10 +12,13 @@
 #define DEFAULT_ATTEMPTS "10"
 #define MIN 0
 #define MAX 9999
+#define FALSE 0
+#define TRUE 1
 
 int i;
 int j;
 int k;
+int l;
 int n;
 
 int end_game()
@@ -33,7 +36,7 @@ void intro_message(int* num_attempts)
     
     printf("Let's play a game! I'm thinking of a four digit code.\n");
     printf("Can you guess the digits in the exact order?\n");
-    printf("I'll give you %i attempts\n", *num_attempts);
+    printf("I'll give you %i attempts.\n", *num_attempts);
     printf("\n");
 }
 
@@ -114,31 +117,41 @@ int get_random_code()
 
 char* get_guess()
 {
+    int retry = 0;
     char* guess;
     guess = malloc(sizeof(char)*100);
 
-    printf("Enter your four digit guess:\n");
+
+    printf("Enter your four digit guess (pick numbers between 0 and 7):\n");
     scanf("%s", guess);
+    printf("\n");
 
     int length = strlen(guess);
 
     if (length != 4)
     {
+        printf("Game master: \"Oops! You entered %i digits or characters. You need to enter 4 digits.\"\n", length);
         printf("\n");
-        printf("Oops! You entered %i digits. You need to enter 4 digits. You lost an opportunity. Try again.\n", length);
+        retry = TRUE;
     }
 
-    // for (i = 0; i < length; i++)
-    // {
-    //     if (guess[i] < 48 || guess[i] > 55)
-    //     {
-    //         printf("\n");
-    //         printf("Oops! Some of the characters you entered are not numbers between 0 and 7.\n");
-    //         printf("You lost an opportunity. Try again.\n");
-    //     }
-    // }
-    
-    printf("\n");
+    for (l = 0; l < length; l++)
+    {
+        if (guess[l] < '0' || guess[l] > '7')
+        { 
+            printf("Game master: \"Uh oh! Some of the characters you entered are not numbers between 0 and 7.\"\n");
+            printf("\n");
+            retry = TRUE;
+            break;
+        }
+    }
+
+    if (retry == TRUE)
+    {
+        printf("Game master: \"Try again.\"\n");
+        printf("\n");
+        get_guess();
+    }
 
     return guess;
 }
