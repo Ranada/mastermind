@@ -26,7 +26,6 @@ int end_game()
     return 0;
 }
 
-
 void intro_message(int* num_attempts)
 {
     printf("---------------------------------------------------------\n");
@@ -51,6 +50,8 @@ void c_flag_error_message()
 
 char* get_code(int argc, char* argv[])
 {
+    int continue_game = TRUE;
+    
     for (i = 0; i < argc; i ++)
     {
         int len =  strlen(argv[i]);
@@ -65,19 +66,26 @@ char* get_code(int argc, char* argv[])
             {
                 if (strlen(code) != 4)
                 {
-                    c_flag_error_message();
-                    exit(0);
+                    continue_game = FALSE;
                 }
 
                 for (k = 0; k < (int)strlen(code); k++)
                 {
                     if (code[k] < '0' || code[k] > '7')
                     {
-                        c_flag_error_message();
+                        continue_game = FALSE;
                         break;
                     }
                 }
-                return code;
+                if (continue_game == FALSE)
+                {
+                    c_flag_error_message();
+                    exit(0);
+                }
+                else
+                {
+                    return code;
+                }
             }
         }
         printf("\n");
