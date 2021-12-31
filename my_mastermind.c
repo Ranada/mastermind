@@ -125,10 +125,24 @@ char* get_attempts(int argc, char* argv[])
     return DEFAULT_ATTEMPTS;
 }
 
-int get_random_code()
+char* get_random_code()
 {
+    char* random_code;
+    int num_of_digits = 4;
+    random_code = malloc(sizeof(char) * (num_of_digits + 1));
+
     srand(time (0));
-    int random_code = MIN + rand() / (RAND_MAX / (MAX - MIN + 1) + 1);
+
+    for (i = 0; i < num_of_digits; i++)
+    {
+        random_code[i] = '0' + (rand() % 8);
+    
+        //printf("RANDOM DIGIT: %c %i %p\n", random_code[i], random_code[i], &random_code[i]);
+    }
+
+    random_code[num_of_digits + 1] = '\0';
+
+    printf("RANDOM CODE: %s\n", random_code);
 
     return random_code;
 }
@@ -273,7 +287,7 @@ int main(int argc, char* argv[])
     your_guess = "";
     
     intro_message(num_attempts);
-
+    get_random_code();
     play_round(num_attempts, secret_code, length, your_guess);
     
     return 0;
