@@ -21,11 +21,6 @@ int k;
 int l;
 int n;
 
-int end_game()
-{
-    return 0;
-}
-
 void intro_message(int* num_attempts)
 {
     printf("---------------------------------------------------------\n");
