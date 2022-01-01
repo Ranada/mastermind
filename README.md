@@ -17,13 +17,12 @@ https://github.com/Ranada/mastermind_game
 ### To play by yourself
 
 - In the command line type `./my_mastermind`
+- Enter your four digit guess (using numbers between 0 and 7) in the command line until you run out of attempts
 
 ### To play with another person
 
-- The game master can set a four digit code using numbers between 0 and 7 after a `-c` flag 
+- The "game master" can set a four digit code using numbers between 0 and 7 after a `-c` flag 
 - For example: `./my_mastermind -c 0357`
-- Enter your four digit guess (using numbers between 0 and 7) in the command line until you run out of attempts
-
 - To customize the number of attempts (default is 10), add a number after a `-t` flag
 - For example: `./my_mastermind -c 0357 -t 5`
 - The player enters a four digit guess (using numbers between 0 and 7) in the command line until they run out of attempts
