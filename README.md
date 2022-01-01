@@ -1,5 +1,8 @@
 # Mastermind Game
 
+my_mastermind.c
+Original author: Neil Ranada
+
 This is a command line game where you have to guess a four digit secret code using numbers between 0 and 7 (ex: 0357). 
 
 You can play by yourself against a random computer generated secret four digit code.
