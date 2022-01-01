@@ -38,12 +38,19 @@ void c_flag_error_message()
 {
     printf("Game master: \"Oops! You need to fix your command line entry.\n");
     printf("The numbers you enter for your secret code after the '-c' flag\n");
-    printf("must be four digits long using numbers between 0 and 7.\n");
+    printf("must be four digits long using numbers between 0 and 7 (ex: -c 1234).\n");
     printf("(ex: -c 1234)\"\n");
     printf("\n");
 }
 
-int* check_argument(char* code, int* continue_game)
+void t_flag_error_message()
+{
+    printf("Game master: \"Oops! You need to fix your command line entry.\n");
+    printf("The characters you entered after the '-t' flag should only contain numbers. (ex: -t 10)\"\n");
+    printf("\n");
+}
+
+int* check_c_flag_argument(char* code, int* continue_game)
 {
     if (strlen(code) != 4)
     {
@@ -54,6 +61,20 @@ int* check_argument(char* code, int* continue_game)
     for (k = 0; k < (int)strlen(code); k++)
     {
         if (code[k] < '0' || code[k] > '7')
+        {
+            *continue_game = FALSE;
+            return continue_game;
+            break;
+        }
+    }
+    return continue_game;
+}
+
+int* check_t_flag_argument(char* attempts, int* continue_game)
+{
+    for (k = 0; k < (int)strlen(attempts); k++)
+    {
+        if (attempts[k] < '0' || attempts[k] > '9')
         {
             *continue_game = FALSE;
             return continue_game;
@@ -74,13 +95,9 @@ char* get_random_code()
     for (i = 0; i < num_of_digits; i++)
     {
         random_code[i] = '0' + (rand() % 8);
-    
-        //printf("RANDOM DIGIT: %c %i %p\n", random_code[i], random_code[i], &random_code[i]);
     }
 
     random_code[num_of_digits + 1] = '\0';
-
-    //printf("RANDOM CODE: %s\n", random_code);
 
     return random_code;
 }
@@ -105,7 +122,7 @@ char* get_code(int argc, char* argv[])
 
             if (ch == DASH && next_ch == C)
             {
-                check_argument(code, continue_game);
+                check_c_flag_argument(code, continue_game);
 
                 if (*continue_game == FALSE)
                 {
@@ -125,6 +142,9 @@ char* get_code(int argc, char* argv[])
 
 char* get_attempts(int argc, char* argv[])
 {
+    int* continue_game = malloc(sizeof(int));
+    *continue_game = TRUE;
+
     for (i = 0; i < argc; i ++)
     {
         int len =  strlen(argv[i]);
@@ -137,7 +157,17 @@ char* get_attempts(int argc, char* argv[])
 
             if (ch == DASH && next_ch == T)
             {
-                return attempts;
+                check_t_flag_argument(attempts, continue_game);
+
+                if (*continue_game == FALSE)
+                {
+                    t_flag_error_message();
+                    exit(0);
+                }
+                else
+                {
+                    return attempts;
+                }
             }
         }
         printf("\n");
