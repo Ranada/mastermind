@@ -1,16 +1,11 @@
+// mastermind.c
+// Mastermind is game for guessing a four digit secret code using non-repeating digits between 0 through 7
+// Original author: Neil Ranada
+
 #include "mastermind.h"
 
 int main(int argc, char* argv[])
 {   
-    txt_attempts = get_attempts(argc, argv);
-    num_attempts = malloc(sizeof(int));
-    *num_attempts = atoi(txt_attempts);
-    secret_code = get_code(argc, argv);
-    length = strlen(secret_code);
-    your_guess = "";
-    
-    intro_message(num_attempts);
-    play_round(num_attempts, secret_code, length, your_guess);
-    
+    start_mastermind(argc, argv);
     return 0;
 }

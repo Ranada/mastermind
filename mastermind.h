@@ -37,5 +37,6 @@ void t_flag_error_message(void);
 void win_message(char* secret_code);
 void game_over_message(char* secret_code);
 void attempts_message(int attempts);
+void start_mastermind(int argc, char* argv[]);
 
 #endif //MASTERMIND_H
