@@ -8,6 +8,8 @@
 #include <time.h>
 
 /* MACROS */
+#define HIGHEST_SECRET_DIGIT 7
+#define DEFAULT_CODE_LENGTH 4
 #define DASH 45
 #define T 116
 #define C 99

@@ -7,35 +7,25 @@ char* get_random_code()
     int i;
     int k;
     int n;
-    int num_of_digits = 4;
-    random_code = malloc(sizeof(char) * (num_of_digits + 1));
+    random_code = malloc(sizeof(char) * (DEFAULT_CODE_LENGTH + 1));
 
     srand(time (0));
 
-    for (i = 0; i < num_of_digits; i++)
+    for (i = 0; i < DEFAULT_CODE_LENGTH; i++)
     {
         n = '0' + (rand() % 8);
         random_code[i] = n;
 
-        printf("OUTER i[%i]: %c\n\n", i, n);
-
         for (k = 0; k < i; k++)
         {
-            printf("INNER random_code i[%i] %c\n", i, random_code[i]);
-            printf("INNER random_code k[%i] %c\n\n", k, random_code[k]);
             if (random_code[i] == random_code[k])
             {
-                printf("DECREMENT I\n");
                 i--;
             }
-            // else
-            // {
-            //     random_code[i] = n;
-            // }
         }
     }
 
-    random_code[num_of_digits + 1] = '\0';
+    random_code[DEFAULT_CODE_LENGTH + 1] = '\0';
 
     printf("RANDOM CODE: %s", random_code);
     return random_code;

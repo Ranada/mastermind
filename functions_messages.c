@@ -53,7 +53,7 @@ void length_error_message(int length)
 /* Show the player error message if they do not enter digits within the allowable range*/
 void digit_error_message()
 {
-    printf("Game master: \n\"Oops! You need to enter non-repeated digits between 0 and 7.\"\n");
+    printf("Game master: \n\"Oops! You need to enter four non-repeated digits between 0 and 7.\"\n");
 }
 
 /* Ask player to try again if they make an incorrect entry*/

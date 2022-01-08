@@ -65,6 +65,18 @@ int validate_guess(char* guess, int length)
         }
     }
 
+    // for (i = 0; i < HIGHEST_SECRET_DIGIT; i++)
+    // {
+    //     for (k = 0; k < i; k++)
+    //     {
+    //         if (guess[i] == guess[k])
+    //         {
+    //             retry = TRUE;
+    //             break;
+    //         }
+    //     }
+    // }
+
     // If any of the validations fail above have player retry round
     if (retry == TRUE)
     {
