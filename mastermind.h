@@ -23,4 +23,4 @@ void win_message(char* secret_code);
 void game_over_message(char* secret_code);
 void attempts_message(int attempts);
 
-#endif //MY_MASTERMIND_H
+#endif //MASTERMIND_H

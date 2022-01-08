@@ -2,18 +2,7 @@
 // Command line game for guessing a secret four digit code using numbers between 0 and 7 (ex: 1234)
 // Original author: Neil Ranada
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#define DASH 45
-#define T 116
-#define C 99
-#define DEFAULT_ATTEMPTS "10"
-#define MIN 0
-#define MAX 9999
-#define FALSE 0
-#define TRUE 1
+#include "mastermind.h"
 
 int i;
 int j;
