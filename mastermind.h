@@ -20,6 +20,7 @@ char* txt_attempts;
 char* secret_code;
 char* your_guess;
 int* num_attempts;
+char* random_code;
 int length;
 
 /* Function prototypes */

@@ -5,7 +5,6 @@
 char* get_random_code()
 {
     int i;
-    char* random_code;
     int num_of_digits = 4;
     random_code = malloc(sizeof(char) * (num_of_digits + 1));
 
@@ -28,7 +27,6 @@ char* get_code(int argc, char* argv[])
     int i;
     int j;
     int* continue_game = malloc(sizeof(int));
-    char* random_code;
 
     *continue_game = TRUE;
     random_code = get_random_code();
