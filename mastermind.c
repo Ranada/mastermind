@@ -4,25 +4,27 @@
 
 #include "mastermind.h"
 
-int i;
-int j;
-int k;
-int l;
-int n;
+// int i;
+// int j;
+// int k;
+// int l;
+// int n;
 
 /* Check to see the -c flag argument (secret code) contains four digits using numbers between 0 and 7 */
 
 int* check_c_flag_argument(char* code, int* continue_game)
 {
+    int i;
+
     if (strlen(code) != 4)
     {
         *continue_game = FALSE;
         return continue_game;
     }
 
-    for (k = 0; k < (int)strlen(code); k++)
+    for (i = 0; i < (int)strlen(code); i++)
     {
-        if (code[k] < '0' || code[k] > '7')
+        if (code[i] < '0' || code[i] > '7')
         {
             *continue_game = FALSE;
             return continue_game;
@@ -36,9 +38,10 @@ int* check_c_flag_argument(char* code, int* continue_game)
 
 int* check_t_flag_argument(char* attempts, int* continue_game)
 {
-    for (k = 0; k < (int)strlen(attempts); k++)
+    int i;
+    for (i = 0; i < (int)strlen(attempts); i++)
     {
-        if (attempts[k] < '0' || attempts[k] > '9')
+        if (attempts[i] < '0' || attempts[i] > '9')
         {
             *continue_game = FALSE;
             return continue_game;
@@ -52,6 +55,7 @@ int* check_t_flag_argument(char* attempts, int* continue_game)
 
 char* get_random_code()
 {
+    int i;
     char* random_code;
     int num_of_digits = 4;
     random_code = malloc(sizeof(char) * (num_of_digits + 1));
@@ -72,6 +76,8 @@ char* get_random_code()
 
 char* get_code(int argc, char* argv[])
 {
+    int i;
+    int j;
     int* continue_game = malloc(sizeof(int));
     char* random_code;
 
@@ -112,6 +118,8 @@ char* get_code(int argc, char* argv[])
 
 char* get_attempts(int argc, char* argv[])
 {
+    int i;
+    int j;
     int* continue_game = malloc(sizeof(int));
     *continue_game = TRUE;
 
@@ -149,6 +157,7 @@ char* get_attempts(int argc, char* argv[])
 
 char* get_guess()
 {
+    int i;
     int retry = 0;
     char* guess;
     guess = malloc(sizeof(char)*100);
@@ -167,9 +176,9 @@ char* get_guess()
         retry = TRUE;
     }
 
-    for (l = 0; l < length; l++)
+    for (i = 0; i < length; i++)
     {
-        if (guess[l] < '0' || guess[l] > '7')
+        if (guess[i] < '0' || guess[i] > '7')
         { 
             printf("Game master: \"Uh oh! Some of the characters you entered are not numbers between 0 and 7.\"\n");
             printf("\n");
@@ -188,24 +197,24 @@ char* get_guess()
     return guess;
 }
 
-
-
 /* Compare the player's four digit guess with the four digit code set by the game master */
 
 int compare_code(int* num_attempts, char* secret_code, int length, char* your_guess)
 {
+    int i;
+    int j;
     int well_placed_count = 0;
     int misplaced_count = 0;
 
-    for (j = 0; j < length; j ++)
+    for (i = 0; i < length; i ++)
     {   
-        for (k = 0; k < length; k++)
+        for (j = 0; j < length; j++)
         {
-            if (your_guess[j] == secret_code[k] && j == k)
+            if (your_guess[i] == secret_code[j] && i == j)
             {
                 well_placed_count++;
             }
-            if (your_guess[j] == secret_code[k] && j != k)
+            if (your_guess[i] == secret_code[j] && i != j)
             {
                 misplaced_count++;
             }
@@ -229,6 +238,8 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
 
 void play_round(int* num_attempts, char* secret_code, int length, char* your_guess)
 {
+    int i;
+    
     for (i = *num_attempts; i >= 0; i--)
     {    
         attempts_message(i);

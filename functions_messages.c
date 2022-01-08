@@ -45,9 +45,9 @@ void attempts_message(attempts)
 
 void win_message(char* secret_code)
 {
-    printf("\n******************************************************************************\n\n");
-    printf("                                   CONGRATS!                                    \n\n");
-    printf("                 You correctly guessed the secret code: %s\n\n", secret_code);
+    printf("\n**********************************************************************************\n\n");
+    printf("                                    CONGRATS!                                    \n\n");
+    printf("                  You correctly guessed the secret code: %s\n\n", secret_code);
     printf("**********************************************************************************\n");
 }
 
