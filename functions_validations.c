@@ -47,12 +47,14 @@ int validate_guess(char* guess, int length)
     int i;
     int retry = FALSE;
 
+    // Check to see guess is correct length
     if (length != 4)
     {
         length_error_message(length);
         retry = TRUE;
     }
 
+    // Check to see if guess uses numbers between 0 and 7
     for (i = 0; i < length; i++)
     {
         if (guess[i] < '0' || guess[i] > '7')
@@ -63,6 +65,7 @@ int validate_guess(char* guess, int length)
         }
     }
 
+    // If any of the validations fail above have player retry round
     if (retry == TRUE)
     {
         try_again_message();
