@@ -20,3 +20,45 @@ char* get_random_code()
 
     return random_code;
 }
+
+/* Get a secret code entered by the game master or use an automatically generated secret code */
+
+char* get_code(int argc, char* argv[])
+{
+    int i;
+    int j;
+    int* continue_game = malloc(sizeof(int));
+    char* random_code;
+
+    *continue_game = TRUE;
+    random_code = get_random_code();
+    
+    for (i = 0; i < argc; i ++)
+    {
+        int len =  strlen(argv[i]);
+
+        for (j = 0; j < len; j++)
+        {
+            char ch = argv[i][j];
+            char next_ch = argv[i][j + 1];
+            char* code = argv[i + 1];
+
+            if (ch == DASH && next_ch == C)
+            {
+                check_c_flag_argument(code, continue_game);
+
+                if (*continue_game == FALSE)
+                {
+                    c_flag_error_message();
+                    exit(0);
+                }
+                else
+                {
+                    return code;
+                }
+            }
+        }
+        printf("\n");
+    }
+    return random_code;
+}

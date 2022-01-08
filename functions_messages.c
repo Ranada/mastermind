@@ -7,8 +7,8 @@ void c_flag_error_message()
     printf("Game master:\n");
     printf("\"Oops! You need to fix your command line entry.\n");
     printf("The numbers you enter for your secret code after the '-c' flag\n");
-    printf("must be four digits long using numbers between 0 and 7 (ex: -c 1234).\n");
-    printf("(ex: -c 1234)\"\n\n");
+    printf("must be four digits long using numbers between 0 and 7.\n");
+    printf("with no repeating digits (ex: -c 1234)\"\n\n");
 }
 
 /* Show error message if non-numbers are entered after the command line -t flag */
