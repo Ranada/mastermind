@@ -125,44 +125,18 @@ char* get_attempts(int argc, char* argv[])
 
 char* get_guess()
 {
-    int i;
-    int retry = 0;
     char* guess;
     guess = malloc(sizeof(char)*100);
 
 
-    printf("Enter your four digit guess (pick numbers between 0 and 7):\n");
-    scanf("%s", guess);
-    printf("\n");
+    ask_guess_message(guess);
 
-    int length = strlen(guess);
+    length = strlen(guess);
 
-    if (length != 4)
-    {
-        printf("Game master: \"Oops! You entered %i digits or characters. You need to enter 4 digits.\"\n", length);
-        printf("\n");
-        retry = TRUE;
-    }
-
-    for (i = 0; i < length; i++)
-    {
-        if (guess[i] < '0' || guess[i] > '7')
-        { 
-            printf("Game master: \"Uh oh! Some of the characters you entered are not numbers between 0 and 7.\"\n");
-            printf("\n");
-            retry = TRUE;
-            break;
-        }
-    }
-
-    if (retry == TRUE)
-    {
-        printf("Game master: \"Try again.\"\n");
-        printf("\n");
-        get_guess();
-    }
+    validate_guess(guess, length);
 
     return guess;
+    free(guess);
 }
 
 /* Compare the player's four digit guess with the four digit code set by the game master */

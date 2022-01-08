@@ -1,7 +1,6 @@
 #include "mastermind.h"
 
 /* Show error message if characters other than 0 through 7 are entered after the command line -c flag */
-
 void c_flag_error_message()
 {
     printf("Game master:\n");
@@ -12,7 +11,6 @@ void c_flag_error_message()
 }
 
 /* Show error message if non-numbers are entered after the command line -t flag */
-
 void t_flag_error_message()
 {
     printf("Game master:\n");
@@ -21,7 +19,6 @@ void t_flag_error_message()
 }
 
 /* Start game with introduction message */
-
 void intro_message(int* num_attempts)
 {
     printf("******************************************************************************\n\n");
@@ -34,15 +31,38 @@ void intro_message(int* num_attempts)
 }
 
 /* Show the player the number of attempts left each round */
-
 void attempts_message(attempts)
 {
     printf("-------------------------------------------------------------------------------\n\n");
     printf("Number of attempts left: %i\n", attempts);
 }
 
-/* Show congratulations message if player correctly guesses secret code */
+void ask_guess_message(char* guess)
+{
+    printf("Enter your four digit guess (pick numbers between 0 and 7):\n");
+    scanf("%s", guess);
+    printf("\n");
+}
 
+/* Show the player error message if they do not enter proper number of digits*/
+void length_error_message(int length)
+{
+    printf("Game master: \n\"Oops! You entered %i digits or characters. You need to enter 4 digits.\"\n", length);
+}
+
+/* Show the player error message if they do not enter digits within the allowable range*/
+void digit_error_message()
+{
+    printf("Game master: \n\"Oops! You need to enter non-repeated digits between 0 and 7.\"\n");
+}
+
+/* Ask player to try again if they make an incorrect entry*/
+void try_again_message()
+{
+    printf("\"Try again!\" \n\n");
+}
+
+/* Show congratulations message if player correctly guesses secret code */
 void win_message(char* secret_code)
 {
     printf("\n**********************************************************************************\n\n");
@@ -52,7 +72,6 @@ void win_message(char* secret_code)
 }
 
 /* Show a message ending the game if the player has zero attempts left and is unable to guess the secret code */
-
 void game_over_message(char* secret_code)
 {
     printf("\n*******************************************************************************\n\n");

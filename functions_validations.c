@@ -40,3 +40,34 @@ int* check_t_flag_argument(char* attempts, int* continue_game)
     }
     return continue_game;
 }
+
+/* Check if input for guess to secret code is valid */
+int validate_guess(char* guess, int length)
+{
+    int i;
+    int retry = FALSE;
+
+    if (length != 4)
+    {
+        length_error_message(length);
+        retry = TRUE;
+    }
+
+    for (i = 0; i < length; i++)
+    {
+        if (guess[i] < '0' || guess[i] > '7')
+        { 
+            digit_error_message();
+            retry = TRUE;
+            break;
+        }
+    }
+
+    if (retry == TRUE)
+    {
+        try_again_message();
+        get_guess();
+    }
+
+    return retry;
+}
