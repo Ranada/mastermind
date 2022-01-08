@@ -1,13 +1,7 @@
 #include "mastermind.h"
 
 int main(int argc, char* argv[])
-{
-    char* txt_attempts;
-    int* num_attempts;
-    char* secret_code;
-    int length;
-    char* your_guess;
-    
+{   
     txt_attempts = get_attempts(argc, argv);
     num_attempts = malloc(sizeof(int));
     *num_attempts = atoi(txt_attempts);

@@ -15,6 +15,13 @@
 #define TRUE 1
 #define FALSE 0
 
+/* Global Variables */
+char* txt_attempts;
+char* secret_code;
+char* your_guess;
+int* num_attempts;
+int length;
+
 /* Function prototypes */
 int* check_c_flag_argument(char* code, int* continue_game);
 int* check_t_flag_argument(char* attempts, int* continue_game);
