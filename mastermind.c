@@ -1,49 +1,5 @@
 #include "mastermind.h"
 
-/* Get the player's guess from the command line. Show error message if entry is not four digits using numbers between 0 and 7  */
-
-char* get_guess()
-{
-    int i;
-    int retry = 0;
-    char* guess;
-    guess = malloc(sizeof(char)*100);
-
-
-    printf("Enter your four digit guess (pick numbers between 0 and 7):\n");
-    scanf("%s", guess);
-    printf("\n");
-
-    int length = strlen(guess);
-
-    if (length != 4)
-    {
-        printf("Game master: \"Oops! You entered %i digits or characters. You need to enter 4 digits.\"\n", length);
-        printf("\n");
-        retry = TRUE;
-    }
-
-    for (i = 0; i < length; i++)
-    {
-        if (guess[i] < '0' || guess[i] > '7')
-        { 
-            printf("Game master: \"Uh oh! Some of the characters you entered are not numbers between 0 and 7.\"\n");
-            printf("\n");
-            retry = TRUE;
-            break;
-        }
-    }
-
-    if (retry == TRUE)
-    {
-        printf("Game master: \"Try again.\"\n");
-        printf("\n");
-        get_guess();
-    }
-
-    return guess;
-}
-
 /* Compare the player's four digit guess with the four digit code set by the game master */
 
 int compare_code(int* num_attempts, char* secret_code, int length, char* your_guess)

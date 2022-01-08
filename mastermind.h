@@ -21,6 +21,7 @@ int* check_t_flag_argument(char* attempts, int* continue_game);
 char* get_random_code();
 char* get_code(int argc, char* argv[]);
 char* get_attempts(int argc, char* argv[]);
+char* get_guess();
 void intro_message(int* num_attempts);
 void c_flag_error_message(void);
 void t_flag_error_message(void);
