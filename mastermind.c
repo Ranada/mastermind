@@ -10,41 +10,6 @@ int k;
 int l;
 int n;
 
-/* Start game with introduction message */
-
-void intro_message(int* num_attempts)
-{
-    printf("---------------------------------------------------------\n");
-    printf("                   My Mastermind Game                    \n");
-    printf("---------------------------------------------------------\n");
-    printf("\n");
-    
-    printf("Let's play a game! I'm thinking of a four digit code.\n");
-    printf("Can you guess the digits in the exact order?\n");
-    printf("I'll give you %i attempts.\n", *num_attempts);
-    printf("\n");
-}
-
-/* Show error message if characters other than 0 through 7 are entered after the command line -c flag */
-
-void c_flag_error_message()
-{
-    printf("Game master: \"Oops! You need to fix your command line entry.\n");
-    printf("The numbers you enter for your secret code after the '-c' flag\n");
-    printf("must be four digits long using numbers between 0 and 7 (ex: -c 1234).\n");
-    printf("(ex: -c 1234)\"\n");
-    printf("\n");
-}
-
-/* Show error message if non-numbers are entered after the command line -t flag */
-
-void t_flag_error_message()
-{
-    printf("Game master: \"Oops! You need to fix your command line entry.\n");
-    printf("The characters you entered after the '-t' flag should only contain numbers. (ex: -t 10)\"\n");
-    printf("\n");
-}
-
 /* Check to see the -c flag argument (secret code) contains four digits using numbers between 0 and 7 */
 
 int* check_c_flag_argument(char* code, int* continue_game)
@@ -223,18 +188,7 @@ char* get_guess()
     return guess;
 }
 
-/* Show congratulations message if player correctly guesses secret code */
 
-void win_message(char* secret_code)
-{
-    printf("\n");
-    printf("********************************************\n");
-    printf("                  CONGRATS!                 \n");
-    printf("********************************************\n");
-    printf("You correctly guessed the secret code: %s\n", secret_code);
-    printf("\n");
-    return;
-}
 
 /* Compare the player's four digit guess with the four digit code set by the game master */
 
@@ -269,26 +223,6 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
     printf("\n");
 
     return *num_attempts;
-}
-
-/* Show a message ending the game if the player has zero attempts left and is unable to guess the secret code */
-
-void game_over_message(char* secret_code)
-{
-    printf("\n");
-    printf("---------------------------------------------------------\n");
-    printf("                        END GAME                         \n");
-    printf("---------------------------------------------------------\n");
-    printf("Nice try, the secret code was: %s\n", secret_code);
-    printf("Good luck next time.\n");
-}
-
-/* Show the player the number of attempts left each round */
-
-void attempts_message(i)
-{
-    printf("----------------------------------------------------------\n");
-    printf("Number of attempts left: %i\n", i);
 }
 
 /* Function used to start each round of game play */
