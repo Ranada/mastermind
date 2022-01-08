@@ -182,3 +182,30 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
 
     return *num_attempts;
 }
+
+/* Function used to start each round of game play */
+
+void play_round(int* num_attempts, char* secret_code, int length, char* your_guess)
+{
+    int i;
+
+    for (i = *num_attempts; i >= 0; i--)
+    {    
+        attempts_message(i);
+
+        if (i > 0)
+        {
+            your_guess = get_guess();
+            *num_attempts = compare_code(num_attempts, secret_code, length, your_guess);
+
+            if (*num_attempts == 0)
+            {
+                break;
+            }
+        }
+        if (i == 0)
+        {
+            game_over_message(secret_code);
+        }
+    }
+}
