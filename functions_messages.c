@@ -37,7 +37,7 @@ void attempts_message(attempts)
     printf("Number of attempts left: %i\n", attempts);
 }
 
-void ask_guess_message(char* guess)
+void ask_for_guess(char* guess)
 {
     printf("Enter your four digit guess (pick numbers between 0 and 7):\n");
     scanf("%s", guess);
@@ -60,6 +60,13 @@ void digit_error_message()
 void try_again_message()
 {
     printf("\"Try again!\" \n\n");
+}
+
+/* Show player wellplaced and misplaced number of guesses */
+void placement_result_message(int well_placed_count, int misplaced_count)
+{
+    printf("Well placed guesses: %i\n", well_placed_count);
+    printf("Close but misplaced guesses: %i\n", misplaced_count);
 }
 
 /* Show congratulations message if player correctly guesses secret code */

@@ -128,8 +128,7 @@ char* get_guess()
     char* guess;
     guess = malloc(sizeof(char)*100);
 
-
-    ask_guess_message(guess);
+    ask_for_guess(guess);
 
     length = strlen(guess);
 
@@ -162,8 +161,8 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
             }
         }
     }
-    printf("Well placed guesses: %i\n", well_placed_count);
-    printf("Close but misplaced guesses: %i\n", misplaced_count);
+
+    placement_result_message(well_placed_count, misplaced_count);
 
     if (well_placed_count == 4)
     {
