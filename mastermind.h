@@ -18,6 +18,7 @@
 /* Function prototypes */
 int* check_c_flag_argument(char* code, int* continue_game);
 int* check_t_flag_argument(char* attempts, int* continue_game);
+char* get_random_code();
 void intro_message(int* num_attempts);
 void c_flag_error_message(void);
 void t_flag_error_message(void);
