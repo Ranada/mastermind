@@ -1,55 +1,4 @@
-// my_mastermind.c
-// Command line game for guessing a secret four digit code using numbers between 0 and 7 (ex: 1234)
-// Original author: Neil Ranada
-
 #include "mastermind.h"
-
-// int i;
-// int j;
-// int k;
-// int l;
-// int n;
-
-/* Check to see the -c flag argument (secret code) contains four digits using numbers between 0 and 7 */
-
-int* check_c_flag_argument(char* code, int* continue_game)
-{
-    int i;
-
-    if (strlen(code) != 4)
-    {
-        *continue_game = FALSE;
-        return continue_game;
-    }
-
-    for (i = 0; i < (int)strlen(code); i++)
-    {
-        if (code[i] < '0' || code[i] > '7')
-        {
-            *continue_game = FALSE;
-            return continue_game;
-            break;
-        }
-    }
-    return continue_game;
-}
-
-/* Check to see the -t flag argument (number of attempts) contains only numbers */
-
-int* check_t_flag_argument(char* attempts, int* continue_game)
-{
-    int i;
-    for (i = 0; i < (int)strlen(attempts); i++)
-    {
-        if (attempts[i] < '0' || attempts[i] > '9')
-        {
-            *continue_game = FALSE;
-            return continue_game;
-            break;
-        }
-    }
-    return continue_game;
-}
 
 /* If a secret code is not set by the game master, randomly generate a four digit code with numbers between 0 and 7 */
 
@@ -239,7 +188,7 @@ int compare_code(int* num_attempts, char* secret_code, int length, char* your_gu
 void play_round(int* num_attempts, char* secret_code, int length, char* your_guess)
 {
     int i;
-    
+
     for (i = *num_attempts; i >= 0; i--)
     {    
         attempts_message(i);
