@@ -42,7 +42,7 @@ int* check_t_flag_argument(char* attempts, int* continue_game)
 }
 
 /* Check if input for guess to secret code is valid */
-int validate_guess(char* guess, int length)
+void validate_guess(char* guess, int length)
 {
     int i;
     int retry = FALSE;
@@ -81,8 +81,6 @@ int validate_guess(char* guess, int length)
     if (retry == TRUE)
     {
         try_again_message();
-        get_guess();
+        ask_for_guess(guess);
     }
-
-    return retry;
 }
