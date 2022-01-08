@@ -1,44 +1,5 @@
 #include "mastermind.h"
 
-/* Automatically set the player's number of attempts to enter the secret code to 10 (or another number specified by the game master) */
-
-char* get_attempts(int argc, char* argv[])
-{
-    int i;
-    int j;
-    int* continue_game = malloc(sizeof(int));
-    *continue_game = TRUE;
-
-    for (i = 0; i < argc; i ++)
-    {
-        int len =  strlen(argv[i]);
-
-        for (j = 0; j < len; j++)
-        {
-            char ch = argv[i][j];
-            char next_ch = argv[i][j + 1];
-            char* attempts = argv[i + 1];
-
-            if (ch == DASH && next_ch == T)
-            {
-                check_t_flag_argument(attempts, continue_game);
-
-                if (*continue_game == FALSE)
-                {
-                    t_flag_error_message();
-                    exit(0);
-                }
-                else
-                {
-                    return attempts;
-                }
-            }
-        }
-        printf("\n");
-    }
-    return DEFAULT_ATTEMPTS;
-}
-
 /* Get the player's guess from the command line. Show error message if entry is not four digits using numbers between 0 and 7  */
 
 char* get_guess()
