@@ -145,3 +145,40 @@ char* get_guess()
 
     return guess;
 }
+
+/* Compare the player's four digit guess with the four digit code set by the game master */
+
+int compare_code(int* num_attempts, char* secret_code, int length, char* your_guess)
+{
+    int i;
+    int j;
+    int well_placed_count = 0;
+    int misplaced_count = 0;
+
+    for (i = 0; i < length; i ++)
+    {   
+        for (j = 0; j < length; j++)
+        {
+            if (your_guess[i] == secret_code[j] && i == j)
+            {
+                well_placed_count++;
+            }
+            if (your_guess[i] == secret_code[j] && i != j)
+            {
+                misplaced_count++;
+            }
+        }
+    }
+    printf("Well placed guesses: %i\n", well_placed_count);
+    printf("Close but misplaced guesses: %i\n", misplaced_count);
+
+    if (well_placed_count == 4)
+    {
+        win_message(secret_code);
+        *num_attempts = 0;
+        return *num_attempts;
+    }
+    printf("\n");
+
+    return *num_attempts;
+}

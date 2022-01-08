@@ -22,6 +22,7 @@ char* get_random_code();
 char* get_code(int argc, char* argv[]);
 char* get_attempts(int argc, char* argv[]);
 char* get_guess();
+int compare_code(int* num_attempts, char* secret_code, int length, char* your_guess);
 void intro_message(int* num_attempts);
 void c_flag_error_message(void);
 void t_flag_error_message(void);
