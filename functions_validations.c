@@ -44,12 +44,10 @@ void check_c_argument(char* argv[], int i)
         {
             char ch = c_flag_arg[j];
             
-            if (ch > '0' && ch < '7')
+            if (ch > '0' || ch < '7')
             {
-                check_non_repeating(c_flag_arg);
-
-                secret_code = c_flag_arg;
-                printf("I'M THE NEW SECRET CODE!: %s\n", secret_code);
+                c_flag_error_message();
+                end_game();
             }
         }
     }
@@ -66,8 +64,6 @@ void check_non_repeating(char* string)
         {
             char ch_one = string[i];
             char ch_two = string[j];
-            // printf("i %i %c\n", i, string[i]);
-            // printf("j %i %c\n\n", j, string[j]);
 
             if (i != j && ch_one == ch_two)
             {

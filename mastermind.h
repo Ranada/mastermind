@@ -23,6 +23,7 @@ void check_c_flag(int argc, char* argv[]);
 void check_c_argument(char* argv[], int i);
 void check_non_repeating(char* string);
 void game_over_message();
+void c_flag_error_message();
 void end_game();
 
 #endif //MASTERMIND_H
