@@ -44,7 +44,7 @@ void check_c_argument(char* argv[], int i)
         {
             char ch = c_flag_arg[j];
             
-            if (ch > '0' || ch < '7')
+            if (ch < '0' || ch > '7')
             {
                 c_flag_error_message();
                 end_game();
