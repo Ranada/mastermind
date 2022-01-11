@@ -6,6 +6,6 @@
 
 int main(int argc, char* argv[])
 {   
-    mastermind(argc, argv);
+    play_mastermind(argc, argv);
     return 0;
 }

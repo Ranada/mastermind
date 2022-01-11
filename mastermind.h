@@ -11,6 +11,7 @@
 
 
 /* Function prototypes */
+void play_mastermind(int argc, char* argv[]);
 
 
 #endif //MASTERMIND_H
