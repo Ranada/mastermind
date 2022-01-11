@@ -2,13 +2,11 @@
 
 void play_mastermind(int argc, char* argv[])
 {
-    // Macros
-    
-    // Variables
-        // Possible digits ['0', '1', '2', '3', '4','5', '6', '7']
-        // Secret code
-        // Attempts
-        // Guess
+    char possible_digits[8] = {'0', '1', '2', '3', '4', '5', '6', '7'};
+
+    printf("Possible digit %c\n", possible_digits[0]);
+
+    check_arguments(argc, argv);
 
     // Check command line for arguments
         // If no arguments

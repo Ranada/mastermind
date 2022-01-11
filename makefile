@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -Wextra -Werror *.c -o play_mastermind 
+	gcc -Wall -Wextra -Werror *.c -o play_mastermind
