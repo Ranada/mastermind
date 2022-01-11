@@ -48,11 +48,8 @@ void check_c_argument(char* argv[], int i)
             {
                 check_non_repeating(c_flag_arg);
 
-                if (continue_game)
-                {
-                    secret_code = c_flag_arg;
-                    printf("I'M THE NEW SECRET CODE!: %s\n", secret_code);
-                }
+                secret_code = c_flag_arg;
+                printf("I'M THE NEW SECRET CODE!: %s\n", secret_code);
             }
         }
     }
