@@ -3,9 +3,9 @@
 void play_mastermind(int argc, char* argv[])
 {
     // Macros
-        // Possible digits ['0', '1', '2', '3', '4','5', '6', '7']
     
     // Variables
+        // Possible digits ['0', '1', '2', '3', '4','5', '6', '7']
         // Secret code
         // Attempts
         // Guess
