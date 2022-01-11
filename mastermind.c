@@ -6,11 +6,6 @@
 
 int main(int argc, char* argv[])
 {   
-    play_mastermind(argc, argv);
-    
-    if (continue_game == false)
-    {
-        printf("Game Over.\n");
+        play_mastermind(argc, argv);
         return 0;
-    }
 }
