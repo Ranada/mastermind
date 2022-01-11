@@ -46,9 +46,32 @@ void check_c_argument(char* argv[], int i)
             
             if (ch > '0' && ch < '7')
             {
+                check_non_repeating(c_flag_arg);
                 printf("I CAN BE THE SECRET CODE: %s\n", c_flag_arg);
                 secret_code = c_flag_arg;
                 printf("I'M THE NEW SECRET CODE!: %s\n", secret_code);
+            }
+        }
+    }
+}
+
+void check_non_repeating(char* string)
+{
+    int i;
+    int j;
+
+    for (i = 0; i < CODE_LENGTH; i++)
+    {
+        for (j = 0; j < CODE_LENGTH; j++)
+        {
+            printf("i %i %c\n", i, string[i]);
+            printf("j %i %c\n\n", j, string[j]);
+
+            if (i != j && string[i] == string[j])
+            {
+                printf("I REPEAT!\n");
+                continue_game = false;
+                break;
             }
         }
     }

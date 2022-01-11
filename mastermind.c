@@ -7,5 +7,10 @@
 int main(int argc, char* argv[])
 {   
     play_mastermind(argc, argv);
-    return 0;
+    
+    if (continue_game == false)
+    {
+        printf("Game Over.\n");
+        return 0;
+    }
 }
