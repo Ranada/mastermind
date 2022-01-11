@@ -16,5 +16,6 @@ int* attempts;
 /* Function prototypes */
 void play_mastermind(int argc, char* argv[]);
 void check_arguments(int argc, char* argv[]);
+void check_c_flag(int argc, char* argv[]);
 
 #endif //MASTERMIND_H
