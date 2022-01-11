@@ -1,7 +1,7 @@
 #include "mastermind.h"
 
 void play_mastermind(int argc, char* argv[])
-{
+{   
     check_arguments(argc, argv);
 
     // Check command line for arguments

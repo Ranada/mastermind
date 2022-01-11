@@ -24,8 +24,7 @@ void check_c_flag(int argc, char* argv[])
         
         if (first_char == '-' && second_char == 'c')
         {
-            printf("I am a C FLAG!\n");
-            check_c_argument(argv, i);  
+            check_c_argument(argv, i);
         }
     }
 }
@@ -34,20 +33,30 @@ void check_c_argument(char* argv[], int i)
 {
     char* c_flag_arg = argv[i + 1];
     int c_flag_arg_length = strlen(c_flag_arg);
-    int j;
 
     printf("C FLAG ARGUMENT: %s\n", c_flag_arg);
     
-    if (c_flag_arg_length == CODE_LENGTH)
+    check_proper_digits(c_flag_arg, c_flag_arg_length);
+
+    // ADD conditional statment for 'continue game' back to main to exit
+        // c_flag_error_message();
+        // end_game();
+}
+
+void check_proper_digits(char* string, int length)
+{
+    int i;
+
+    if (length == CODE_LENGTH)
     {
-        for (j = 0; j < c_flag_arg_length; j++)
+        for (i = 0; i < length; i++)
         {
-            char ch = c_flag_arg[j];
+            char ch = string[i];
             
             if (ch < '0' || ch > '7')
             {
-                c_flag_error_message();
-                end_game();
+                continue_game(FALSE);
+                break;
             }
         }
     }
@@ -80,4 +89,17 @@ void end_game()
 {
     printf("END GAME FUNCTION\n");
     exit(0);
+}
+
+int continue_game(int result)
+{
+    int continue_game = result;
+
+    if (continue_game == FALSE)
+    {
+        printf("PROGRAM ENDS\n");
+        return 0;
+    }
+
+    return continue_game;
 }
