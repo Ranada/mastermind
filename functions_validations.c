@@ -52,6 +52,7 @@ void check_proper_digits(char* string, int length)
             
             if (ch < '0' || ch > '7')
             {
+                c_flag_error_message();
                 continue_game(FALSE);
                 break;
             }
