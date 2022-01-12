@@ -10,9 +10,11 @@ void check_arguments(int argc, char* argv[])
     if (argc > 1)
     {
         check_c_flag(argc, argv);
+        check_t_flag(argc, argv);
     }
 }
 
+/* Check "-c" flag argument */
 void check_c_flag(int argc, char* argv[])
 {
     int i;
@@ -109,4 +111,23 @@ int continue_game(int result)
     }
 
     return continue_game;
+}
+
+/* check "-t" flag argument */
+void check_t_flag(int argc, char* argv[])
+{
+    int i;
+
+    for (i = 0; i < argc; i++)
+    {
+        char first_char = argv[i][0];
+        char second_char = argv[i][1];
+        
+        if (first_char == '-' && second_char == 't')
+        {
+            printf("Hello from T FLAG checker\n");
+            //check_c_argument(argv, i);
+            break;
+        }
+    }
 }

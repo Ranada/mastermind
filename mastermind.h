@@ -26,6 +26,7 @@ void check_proper_digits(char* string, int length);
 void check_non_repeating(char* string);
 void game_over_message();
 void c_flag_error_message();
+void check_t_flag(int argc, char* argv[]);
 int continue_game(int result);
 
 #endif //MASTERMIND_H
