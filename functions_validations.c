@@ -2,6 +2,7 @@
 
 void check_arguments(int argc, char* argv[])
 {
+    
     if (argc == 1)
     {
         generate_random_code();
@@ -42,7 +43,7 @@ void check_c_argument(char* argv[], int i)
     check_proper_digits(c_flag_arg, c_flag_arg_length);
 }
 
-void check_proper_digits(char* string, int length)
+void check_proper_digits(char* user_set_code, int length)
 {
     int i;
 
@@ -50,7 +51,7 @@ void check_proper_digits(char* string, int length)
     {
         for (i = 0; i < length; i++)
         {
-            char ch = string[i];
+            char ch = user_set_code[i];
             
             if (ch < '0' || ch > '7')
             {
@@ -65,10 +66,10 @@ void check_proper_digits(char* string, int length)
         c_flag_error_message();
         continue_game(FALSE);
     }
-    check_non_repeating(string);
+    check_non_repeating(user_set_code);
 }
 
-void check_non_repeating(char* string)
+void check_non_repeating(char* user_set_code)
 {
     int i;
     int j;
@@ -78,8 +79,8 @@ void check_non_repeating(char* string)
     {
         for (j = 0; j < CODE_LENGTH; j++)
         {
-            char ch_one = string[i];
-            char ch_two = string[j];
+            char ch_one = user_set_code[i];
+            char ch_two = user_set_code[j];
 
             if (i != j && ch_one == ch_two)
             {
@@ -95,7 +96,7 @@ void check_non_repeating(char* string)
         }
         else
         {
-            secret_code = string;
+            secret_code = user_set_code;
             break;
         }
     }
@@ -142,13 +143,13 @@ void check_t_argument(char* argv[], int i)
     check_if_integer(t_flag_arg, t_flag_arg_length);
 }
 
-void check_if_integer(char* string, int length)
+void check_if_integer(char* user_set_attempts, int length)
 {
     int i;
 
         for (i = 0; i < length; i++)
         {
-            char ch = string[i];
+            char ch = user_set_attempts[i];
             
             if (ch < '0' || ch > '9')
             {

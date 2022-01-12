@@ -2,7 +2,17 @@
 
 void play_mastermind(int argc, char* argv[])
 {   
+    int* attempts;
+    attempts = malloc(sizeof(int));
+    *attempts = 10;
+
     check_arguments(argc, argv);
+
+    if (argc == 1)
+    {
+        printf("RANDOMLY GENERATED SECRET CODE IS: %s\n", secret_code);
+        printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
+    }
 
     if (argc > 1)
     {
@@ -11,7 +21,6 @@ void play_mastermind(int argc, char* argv[])
 
     // Check command line for arguments
         // If no arguments
-            // Generate 4 digit secret code using non-repeating numbers from 0 to 7 (ex. 1357)
             // Number of attempts is 10
     
     // Introduction message
