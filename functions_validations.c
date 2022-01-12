@@ -38,10 +38,6 @@ void check_c_argument(char* argv[], int i)
     printf("C FLAG ARGUMENT: %s\n", c_flag_arg);
     
     check_proper_digits(c_flag_arg, c_flag_arg_length);
-
-    // ADD conditional statment for 'continue game' back to main to exit
-        // c_flag_error_message();
-        // end_game();
 }
 
 void check_proper_digits(char* string, int length)
@@ -59,7 +55,17 @@ void check_proper_digits(char* string, int length)
                 continue_game(FALSE);
                 break;
             }
+            else
+            {
+                check_non_repeating(string);
+                break;
+            }
         }
+    }
+    else
+    {
+        c_flag_error_message();
+        continue_game(FALSE);
     }
 }
 
@@ -67,6 +73,7 @@ void check_non_repeating(char* string)
 {
     int i;
     int j;
+    int continue_status;
 
     for (i = 0; i < CODE_LENGTH; i++)
     {
@@ -77,11 +84,15 @@ void check_non_repeating(char* string)
 
             if (i != j && ch_one == ch_two)
             {
-                printf("I REPEAT!\n");
-                game_over_message();
-                end_game();
+                c_flag_error_message();
+                continue_status = FALSE;
+                continue_game(FALSE);
                 break;
             }
+        }
+        if (continue_status == FALSE)
+        {
+            break;
         }
     }
 }
