@@ -24,9 +24,12 @@ void check_c_flag(int argc, char* argv[]);
 void check_c_argument(char* argv[], int i);
 void check_proper_digits(char* string, int length);
 void check_non_repeating(char* string);
-void game_over_message();
 void c_flag_error_message();
 void check_t_flag(int argc, char* argv[]);
+void check_t_argument(char* argv[], int i);
+void check_if_integer(char* string, int length);
+void t_flag_error_message();
 int continue_game(int result);
+void game_over_message();
 
 #endif //MASTERMIND_H

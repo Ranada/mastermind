@@ -8,12 +8,7 @@ void play_mastermind(int argc, char* argv[])
         // If no arguments
             // Generate 4 digit secret code using non-repeating numbers from 0 to 7 (ex. 1357)
             // Number of attempts is 10
-        // If "-c" flag is present
-            // Check for 4 digit secret code using non-repeating numbers from 0 to 7 (ex. 1357)
-                // If secret code is good
-                    // Assign to Secret code variable
-                // Else
-                    // Show error message and ask to re-enter valid argument
+            
         // If "-t" flag is present
             // Check argument is a number
             // If argument is a number

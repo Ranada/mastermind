@@ -125,9 +125,35 @@ void check_t_flag(int argc, char* argv[])
         
         if (first_char == '-' && second_char == 't')
         {
-            printf("Hello from T FLAG checker\n");
-            //check_c_argument(argv, i);
+            check_t_argument(argv, i);
             break;
         }
     }
+}
+
+void check_t_argument(char* argv[], int i)
+{
+    char* t_flag_arg = argv[i + 1];
+    int t_flag_arg_length = strlen(t_flag_arg);
+
+    printf("T FLAG ARGUMENT: %s\n", t_flag_arg);
+    
+    check_if_integer(t_flag_arg, t_flag_arg_length);
+}
+
+void check_if_integer(char* string, int length)
+{
+    int i;
+
+        for (i = 0; i < length; i++)
+        {
+            char ch = string[i];
+            
+            if (ch < '0' || ch > '9')
+            {
+                t_flag_error_message();
+                continue_game(FALSE);
+                break;
+            }
+        }
 }
