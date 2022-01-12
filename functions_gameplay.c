@@ -4,9 +4,9 @@ void play_mastermind(int argc, char* argv[])
 {   
     check_arguments(argc, argv);
 
-    if (argc == 1)
+    if (argc > 1)
     {
-        generate_random_code();
+        printf("USER SET CODE IS: %s\n", secret_code);
     }
 
     // Check command line for arguments

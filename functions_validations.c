@@ -4,7 +4,7 @@ void check_arguments(int argc, char* argv[])
 {
     if (argc == 1)
     {
-        printf("Generate random secret code %s\n", argv[0]);
+        generate_random_code();
     }
 
     if (argc > 1)
@@ -58,11 +58,6 @@ void check_proper_digits(char* string, int length)
                 continue_game(FALSE);
                 break;
             }
-            else
-            {
-                check_non_repeating(string);
-                break;
-            }
         }
     }
     else
@@ -70,13 +65,14 @@ void check_proper_digits(char* string, int length)
         c_flag_error_message();
         continue_game(FALSE);
     }
+    check_non_repeating(string);
 }
 
 void check_non_repeating(char* string)
 {
     int i;
     int j;
-    int continue_status;
+    int continue_status = TRUE;
 
     for (i = 0; i < CODE_LENGTH; i++)
     {
@@ -96,6 +92,10 @@ void check_non_repeating(char* string)
         if (continue_status == FALSE)
         {
             break;
+        }
+        else
+        {
+            secret_code = string;
         }
     }
 }
