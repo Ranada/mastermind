@@ -96,6 +96,7 @@ void check_non_repeating(char* string)
         else
         {
             secret_code = string;
+            break;
         }
     }
 }
