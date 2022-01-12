@@ -98,12 +98,6 @@ void check_non_repeating(char* string)
     }
 }
 
-void end_game()
-{
-    printf("END GAME FUNCTION\n");
-    exit(0);
-}
-
 int continue_game(int result)
 {
     int continue_game = result;

@@ -27,6 +27,5 @@ void check_non_repeating(char* string);
 void game_over_message();
 void c_flag_error_message();
 int continue_game(int result);
-void end_game();
 
 #endif //MASTERMIND_H
