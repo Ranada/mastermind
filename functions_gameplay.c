@@ -4,17 +4,15 @@ void play_mastermind(int argc, char* argv[])
 {   
     check_arguments(argc, argv);
 
+    if (argc == 1)
+    {
+        random_secret_code();
+    }
+
     // Check command line for arguments
         // If no arguments
             // Generate 4 digit secret code using non-repeating numbers from 0 to 7 (ex. 1357)
             // Number of attempts is 10
-            
-        // If "-t" flag is present
-            // Check argument is a number
-            // If argument is a number
-                // Assignt to Attempts variable
-            // Else
-                // Show error message and ask to re-enter valid argument
     
     // Introduction message
         // Game instructions
@@ -33,4 +31,10 @@ void play_mastermind(int argc, char* argv[])
     
     // If guess is not correct and not exceeded max number of attempts
         // Ask for another guess        
+}
+
+void random_secret_code()
+{
+    secret_code = "1234";
+    printf("RANDOM SECRET CODE: %s\n", secret_code);
 }

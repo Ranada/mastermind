@@ -29,6 +29,7 @@ void check_t_flag(int argc, char* argv[]);
 void check_t_argument(char* argv[], int i);
 void check_if_integer(char* string, int length);
 void t_flag_error_message();
+void random_secret_code();
 int continue_game(int result);
 void game_over_message();
 
