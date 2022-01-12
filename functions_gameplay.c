@@ -6,7 +6,7 @@ void play_mastermind(int argc, char* argv[])
 
     if (argc == 1)
     {
-        random_secret_code();
+        generate_random_code();
     }
 
     // Check command line for arguments
@@ -33,8 +33,33 @@ void play_mastermind(int argc, char* argv[])
         // Ask for another guess        
 }
 
-void random_secret_code()
+void generate_random_code()
 {
-    secret_code = "1234";
+    int i;
+    int k;
+    int n;
+    char* random_code;
+
+    random_code = malloc(sizeof(char) * (CODE_LENGTH + 1));
+
+    srand(time (0));
+
+    for (i = 0; i < CODE_LENGTH; i++)
+    {
+        n = '0' + (rand() % 8);
+        random_code[i] = n;
+
+        for (k = 0; k < i; k++)
+        {
+            if (random_code[i] == random_code[k])
+            {
+                i--;
+            }
+        }
+    }
+
+    random_code[CODE_LENGTH + 1] = '\0';
+
+    secret_code = random_code;
     printf("RANDOM SECRET CODE: %s\n", secret_code);
 }

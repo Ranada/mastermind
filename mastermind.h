@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 
 /* MACROS */
 #define CODE_LENGTH 4
@@ -29,7 +30,7 @@ void check_t_flag(int argc, char* argv[]);
 void check_t_argument(char* argv[], int i);
 void check_if_integer(char* string, int length);
 void t_flag_error_message();
-void random_secret_code();
+void generate_random_code();
 int continue_game(int result);
 void game_over_message();
 
