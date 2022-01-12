@@ -25,6 +25,7 @@ void check_c_flag(int argc, char* argv[])
         if (first_char == '-' && second_char == 'c')
         {
             check_c_argument(argv, i);
+            break;
         }
     }
 }
