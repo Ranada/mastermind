@@ -4,20 +4,14 @@ void play_mastermind(int argc, char* argv[])
 {   
     int* attempts;
     attempts = malloc(sizeof(int));
+    
     *attempts = 10;
+    secret_code = generate_random_code();
 
     check_arguments(argc, argv);
 
-    if (argc == 1)
-    {
-        printf("RANDOMLY GENERATED SECRET CODE IS: %s\n", secret_code);
-        printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
-    }
-
-    if (argc > 1)
-    {
-        printf("USER SET CODE IS: %s\n", secret_code);
-    }
+    printf("SECRET CODE IS: %s\n", secret_code);
+    printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
 
     // Check command line for arguments
         // If no arguments
@@ -42,7 +36,7 @@ void play_mastermind(int argc, char* argv[])
         // Ask for another guess        
 }
 
-void generate_random_code()
+char* generate_random_code()
 {
     int i;
     int k;
@@ -69,6 +63,17 @@ void generate_random_code()
 
     random_code[CODE_LENGTH + 1] = '\0';
 
-    secret_code = random_code;
     printf("RANDOM SECRET CODE: %s\n", secret_code);
+
+    return random_code;
+}
+
+void set_attempts(int user_set_attempts)
+{
+    attempts = malloc(sizeof(int));
+    *attempts = 10;
+
+    *attempts = user_set_attempts;
+
+    printf("SET ATTEMPTS TO: %d\n", *attempts);
 }

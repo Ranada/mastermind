@@ -2,12 +2,6 @@
 
 void check_arguments(int argc, char* argv[])
 {
-    
-    if (argc == 1)
-    {
-        generate_random_code();
-    }
-
     if (argc > 1)
     {
         check_c_flag(argc, argv);
@@ -158,4 +152,6 @@ void check_if_integer(char* user_set_attempts, int length)
                 break;
             }
         }
+
+    set_attempts(atoi(user_set_attempts));
 }
