@@ -20,6 +20,7 @@ int* attempts;
 
 /* Function prototypes */
 void play_mastermind(int argc, char* argv[]);
+char* generate_random_code();
 void check_arguments(int argc, char* argv[]);
 void check_c_flag(int argc, char* argv[]);
 void check_c_argument(char* argv[], int i);
@@ -30,8 +31,8 @@ void check_t_flag(int argc, char* argv[]);
 void check_t_argument(char* argv[], int i);
 void check_if_integer(char* user_set_attempts, int length);
 void t_flag_error_message();
-char* generate_random_code();
 void set_attempts(int user_set_attempts);
+void intro_message(int* attempts);
 void game_over_message();
 int continue_game(int result);
 

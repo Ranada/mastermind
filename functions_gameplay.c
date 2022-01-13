@@ -9,13 +9,11 @@ void play_mastermind(int argc, char* argv[])
     secret_code = generate_random_code();
 
     check_arguments(argc, argv);
-
+    intro_message(attempts);
     printf("SECRET CODE IS: %s\n", secret_code);
     printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
 
-    // Check command line for arguments
-        // If no arguments
-            // Number of attempts is 10
+    
     
     // Introduction message
         // Game instructions
@@ -63,7 +61,7 @@ char* generate_random_code()
 
     random_code[CODE_LENGTH + 1] = '\0';
 
-    printf("RANDOM SECRET CODE: %s\n", secret_code);
+    printf("RANDOM SECRET CODE: %s\n", random_code);
 
     return random_code;
 }
