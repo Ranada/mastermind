@@ -33,6 +33,7 @@ void check_if_integer(char* user_set_attempts, int length);
 void t_flag_error_message();
 void set_attempts(int user_set_attempts);
 void intro_message(int* attempts);
+void get_guess_code(char* guess);
 void game_over_message();
 int continue_game(int result);
 

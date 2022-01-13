@@ -3,15 +3,21 @@
 void play_mastermind(int argc, char* argv[])
 {   
     int* attempts;
-    attempts = malloc(sizeof(int));
+    char* guess;
     
+    attempts = malloc(sizeof(int));
     *attempts = 10;
+    guess = malloc(sizeof(char)*5);
+    
     secret_code = generate_random_code();
 
     check_arguments(argc, argv);
     intro_message(attempts);
+    get_guess_code(guess);
+
     printf("SECRET CODE IS: %s\n", secret_code);
     printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
+    printf("YOUR GUESS CODE: %s\n", guess);
 
     
     
@@ -74,4 +80,10 @@ void set_attempts(int user_set_attempts)
     *attempts = user_set_attempts;
 
     printf("SET ATTEMPTS TO: %d\n", *attempts);
+}
+
+void get_guess_code(char* guess)
+{
+    printf("Enter your four digit guess (pick non-repeating numbers between 0 and 7):\n");
+    scanf("%s", guess);
 }
