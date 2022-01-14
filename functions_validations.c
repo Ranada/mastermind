@@ -1,16 +1,16 @@
 #include "mastermind.h"
 
-void check_arguments(int argc, char* argv[])
+void check_arguments(int argc, char* argv[], int* continue_game)
 {
     if (argc > 1)
     {
-        check_c_flag(argc, argv);
+        check_c_flag(argc, argv, continue_game);
         check_t_flag(argc, argv);
     }
 }
 
 /* Check "-c" flag argument */
-void check_c_flag(int argc, char* argv[])
+void check_c_flag(int argc, char* argv[], int* continue_game)
 {
     int i;
 
@@ -21,92 +21,68 @@ void check_c_flag(int argc, char* argv[])
         
         if (first_char == '-' && second_char == 'c')
         {
-            check_c_argument(argv, i);
+            check_c_argument(argv, i, continue_game);
             break;
         }
     }
 }
 
-void check_c_argument(char* argv[], int i)
+void check_c_argument(char* argv[], int i, int* continue_game)
 {
     char* c_flag_arg = argv[i + 1];
     int c_flag_arg_length = strlen(c_flag_arg);
 
     printf("C FLAG ARGUMENT: %s\n", c_flag_arg);
     
-    check_proper_digits(c_flag_arg, c_flag_arg_length);
+    check_proper_digits(c_flag_arg, c_flag_arg_length, continue_game);
 }
 
-void check_proper_digits(char* user_set_code, int length)
+void check_proper_digits(char* string_input, int length, int* continue_game)
 {
     int i;
 
-    if (length == CODE_LENGTH)
+    if (length != CODE_LENGTH)
+    {
+        *continue_game = NO;
+        return;
+    }
+    else if (length == CODE_LENGTH)
     {
         for (i = 0; i < length; i++)
         {
-            char ch = user_set_code[i];
+            char ch = string_input[i];
             
             if (ch < '0' || ch > '7')
             {
-                c_flag_error_message();
-                continue_game(FALSE);
-                break;
+                ;
+                *continue_game = NO;
+                return;
             }
         }
     }
-    else
-    {
-        c_flag_error_message();
-        continue_game(FALSE);
-    }
-    check_non_repeating(user_set_code);
+
+    check_non_repeating(string_input, continue_game);
 }
 
-void check_non_repeating(char* user_set_code)
+void check_non_repeating(char* string_input, int* continue_game)
 {
     int i;
     int j;
-    int continue_status = TRUE;
 
     for (i = 0; i < CODE_LENGTH; i++)
     {
         for (j = 0; j < CODE_LENGTH; j++)
         {
-            char ch_one = user_set_code[i];
-            char ch_two = user_set_code[j];
+            char ch_one = string_input[i];
+            char ch_two = string_input[j];
 
             if (i != j && ch_one == ch_two)
             {
-                c_flag_error_message();
-                continue_status = FALSE;
-                continue_game(FALSE);
-                break;
+                *continue_game = NO;
+                return;
             }
         }
-        if (continue_status == FALSE)
-        {
-            break;
-        }
-        else
-        {
-            secret_code = user_set_code;
-            break;
-        }
     }
-}
-
-int continue_game(int result)
-{
-    int continue_game = result;
-
-    if (continue_game == FALSE)
-    {
-        printf("PROGRAM ENDS\n");
-        return 0;
-    }
-
-    return continue_game;
 }
 
 /* check "-t" flag argument */
@@ -148,7 +124,7 @@ void check_if_integer(char* user_set_attempts, int length)
             if (ch < '0' || ch > '9')
             {
                 t_flag_error_message();
-                continue_game(FALSE);
+                *continue_game = NO;
                 break;
             }
         }

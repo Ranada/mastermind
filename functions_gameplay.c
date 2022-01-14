@@ -1,17 +1,27 @@
 #include "mastermind.h"
 
-void play_mastermind(int argc, char* argv[])
+int play_mastermind(int argc, char* argv[])
 {   
     int* attempts;
     char* guess;
-    
-    attempts = malloc(sizeof(int));
-    *attempts = 10;
-    guess = malloc(sizeof(char)*5);
-    
-    secret_code = generate_random_code();
+    int* continue_game;
 
-    check_arguments(argc, argv);
+    attempts = malloc(sizeof(int) * 1);
+    guess = malloc(sizeof(char) * 5);
+    continue_game = malloc(sizeof(int) * 1);
+    
+    *attempts = 10;
+    secret_code = generate_random_code();
+    *continue_game = YES;
+
+    check_arguments(argc, argv, continue_game);
+
+    if (* continue_game == NO)
+    {
+        c_flag_error_message();
+        return 0;
+    }
+
     intro_message(attempts);
     get_guess_code(guess);
 
@@ -37,7 +47,8 @@ void play_mastermind(int argc, char* argv[])
         // Show a congrats message and end program
     
     // If guess is not correct and not exceeded max number of attempts
-        // Ask for another guess        
+        // Ask for another guess   
+    return 0;    
 }
 
 char* generate_random_code()
