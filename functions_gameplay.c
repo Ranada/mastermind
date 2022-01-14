@@ -23,20 +23,13 @@ int play_mastermind(int argc, char* argv[])
     }
 
     intro_message(attempts);
-    get_guess_code(guess);
-
-    printf("SECRET CODE IS: %s\n", secret_code);
-    printf("DEFAULT ATTEMPTS IS: %d\n", *attempts);
-    printf("YOUR GUESS CODE: %s\n", guess);
+    get_guess_code(attempts, guess);
+    compare_code(attempts, secret_code, guess);
 
     
     
-    // Introduction message
-        // Game instructions
-        // Number of attempts
 
     // Round #
-        // Ask to enter a four digit case using non-repeating digits between 0 and 7 (ex: 1357)
         // If well place piece (digit in the correct index place)
             // Add to well place piece count
         // If digit is part of the secret code but in the wrong index
@@ -93,8 +86,18 @@ void set_attempts(int user_set_attempts)
     printf("SET ATTEMPTS TO: %d\n", *attempts);
 }
 
-void get_guess_code(char* guess)
+void get_guess_code(int* attempts, char* guess)
 {
+    printf("Attempts left: %i\n\n", *attempts);
     printf("Enter your four digit guess (pick non-repeating numbers between 0 and 7):\n");
     scanf("%s", guess);
+}
+
+void compare_code(int* attempts, char* secret_code, char* guess)
+{
+    if (strcmp(secret_code, guess) == 0)
+    {
+        congrats_message(secret_code);
+        *attempts = 0;
+    }
 }

@@ -17,7 +17,7 @@
 char* secret_code;
 char* guess_code;
 int* attempts;
-char* continue_game;
+int* continue_game;
 
 /* Function prototypes */
 int play_mastermind(int argc, char* argv[]);
@@ -34,7 +34,9 @@ void check_if_integer(char* user_set_attempts, int length);
 void t_flag_error_message();
 void set_attempts(int user_set_attempts);
 void intro_message(int* attempts);
-void get_guess_code(char* guess);
+void get_guess_code(int* attempts, char* guess);
+void compare_code(int* attempts, char* secret_code, char* guess);
+void congrats_message(char* secret_code);
 void game_over_message();
 
 #endif //MASTERMIND_H
