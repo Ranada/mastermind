@@ -56,6 +56,11 @@ void check_c_argument(char* argv[], int i, int* continue_game)
         
         check_proper_digits(c_flag_arg, c_flag_arg_length, continue_game);
     }
+
+    if (*continue_game == YES)
+    {
+        secret_code = c_flag_arg;
+    }
 }
 
 void check_proper_digits(char* string_input, int length, int* continue_game)

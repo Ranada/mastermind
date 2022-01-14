@@ -21,6 +21,8 @@ int play_mastermind(int argc, char* argv[])
         return 0;
     }
 
+    printf("SECRET CODE SET TO: %s\n", secret_code);
+
     intro_message(attempts);
     get_guess_code(attempts, guess);
     compare_code(attempts, secret_code, guess);
