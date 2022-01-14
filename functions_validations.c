@@ -30,11 +30,19 @@ void check_c_flag(int argc, char* argv[], int* continue_game)
 void check_c_argument(char* argv[], int i, int* continue_game)
 {
     char* c_flag_arg = argv[i + 1];
-    int c_flag_arg_length = strlen(c_flag_arg);
-
     printf("C FLAG ARGUMENT: %s\n", c_flag_arg);
-    
-    check_proper_digits(c_flag_arg, c_flag_arg_length, continue_game);
+
+    if (c_flag_arg == NULL)
+    {
+        *continue_game = NO;
+        return;
+    }
+    else
+    {
+        int c_flag_arg_length = strlen(c_flag_arg);
+        
+        check_proper_digits(c_flag_arg, c_flag_arg_length, continue_game);
+    }
 }
 
 void check_proper_digits(char* string_input, int length, int* continue_game)

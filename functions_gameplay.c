@@ -16,7 +16,7 @@ int play_mastermind(int argc, char* argv[])
 
     check_arguments(argc, argv, continue_game);
 
-    if (* continue_game == NO)
+    if (*continue_game == NO)
     {
         c_flag_error_message();
         return 0;
