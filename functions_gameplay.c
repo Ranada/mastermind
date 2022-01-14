@@ -18,7 +18,6 @@ int play_mastermind(int argc, char* argv[])
 
     if (*continue_game == NO)
     {
-        c_flag_error_message();
         return 0;
     }
 

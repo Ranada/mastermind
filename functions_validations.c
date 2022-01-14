@@ -5,7 +5,20 @@ void check_arguments(int argc, char* argv[], int* continue_game)
     if (argc > 1)
     {
         check_c_flag(argc, argv, continue_game);
-        check_t_flag(argc, argv);
+
+        if (*continue_game == NO)
+        {
+            c_flag_error_message();
+            return;
+        }
+
+        check_t_flag(argc, argv, continue_game);
+
+        if (*continue_game == NO)
+        {
+            t_flag_error_message();
+            return;
+        }
     }
 }
 
@@ -93,7 +106,7 @@ void check_non_repeating(char* string_input, int* continue_game)
 }
 
 /* check "-t" flag argument */
-void check_t_flag(int argc, char* argv[])
+void check_t_flag(int argc, char* argv[], int* continue_game)
 {
     int i;
 
@@ -104,23 +117,32 @@ void check_t_flag(int argc, char* argv[])
         
         if (first_char == '-' && second_char == 't')
         {
-            check_t_argument(argv, i);
+            check_t_argument(argv, i, continue_game);
             break;
         }
     }
 }
 
-void check_t_argument(char* argv[], int i)
+void check_t_argument(char* argv[], int i, int* continue_game)
 {
     char* t_flag_arg = argv[i + 1];
-    int t_flag_arg_length = strlen(t_flag_arg);
 
-    printf("T FLAG ARGUMENT: %s\n", t_flag_arg);
+    if (t_flag_arg == NULL)
+    {
+        *continue_game = NO;
+        return;
+    }
+    else
+    {
+        int t_flag_arg_length = strlen(t_flag_arg);
+
+        printf("T FLAG ARGUMENT: %s\n", t_flag_arg);
     
-    check_if_integer(t_flag_arg, t_flag_arg_length);
+        check_if_integer(t_flag_arg, t_flag_arg_length, continue_game);
+    }
 }
 
-void check_if_integer(char* user_set_attempts, int length)
+void check_if_integer(char* user_set_attempts, int length, int* continue_game)
 {
     int i;
 
@@ -130,7 +152,6 @@ void check_if_integer(char* user_set_attempts, int length)
             
             if (ch < '0' || ch > '9')
             {
-                t_flag_error_message();
                 *continue_game = NO;
                 break;
             }
