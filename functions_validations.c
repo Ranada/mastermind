@@ -54,7 +54,6 @@ void check_proper_digits(char* string_input, int length, int* continue_game)
             
             if (ch < '0' || ch > '7')
             {
-                ;
                 *continue_game = NO;
                 return;
             }
