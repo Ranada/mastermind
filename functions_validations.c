@@ -43,7 +43,6 @@ void check_c_flag(int argc, char* argv[], int* continue_game)
 void check_c_argument(char* argv[], int i, int* continue_game)
 {
     char* c_flag_arg = argv[i + 1];
-    printf("C FLAG ARGUMENT: %s\n", c_flag_arg);
 
     if (c_flag_arg == NULL)
     {
@@ -140,8 +139,6 @@ void check_t_argument(char* argv[], int i, int* continue_game)
     else
     {
         int t_flag_arg_length = strlen(t_flag_arg);
-
-        printf("T FLAG ARGUMENT: %s\n", t_flag_arg);
     
         check_if_integer(t_flag_arg, t_flag_arg_length, continue_game);
     }
@@ -150,6 +147,9 @@ void check_t_argument(char* argv[], int i, int* continue_game)
 void check_if_integer(char* user_set_attempts, int length, int* continue_game)
 {
     int i;
+    int* convert_char_attempts;
+    
+    convert_char_attempts = malloc(sizeof(int) * length);
 
         for (i = 0; i < length; i++)
         {
@@ -162,16 +162,12 @@ void check_if_integer(char* user_set_attempts, int length, int* continue_game)
             }
         }
 
-    int* convert_char_attempts;
-    convert_char_attempts = malloc(sizeof(int) * length);
     *convert_char_attempts = atoi(user_set_attempts);
 
-    //set_attempts(atoi(user_set_attempts));
     attempts = convert_char_attempts;
 }
 
-/* Check guess entered in command line is valid */
-
+/* Check if guess entered in command line is valid */
 void check_guess(char* guess, int* continue_game)
 {
     int length = strlen(guess);

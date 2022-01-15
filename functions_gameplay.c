@@ -2,11 +2,9 @@
 
 int play_mastermind(int argc, char* argv[])
 {   
-    //int* attempts;
     char* guess;
     int* continue_game;
 
-    //attempts = malloc(sizeof(int) * 100);
     guess = malloc(sizeof(char) * 5);
     continue_game = malloc(sizeof(int) * 1);
     
@@ -16,25 +14,13 @@ int play_mastermind(int argc, char* argv[])
 
     check_arguments(argc, argv, continue_game);
 
-    if (*continue_game == NO)
+    if (*continue_game == YES)
     {
-        return 0;
+        intro_message(attempts);
+        play_round(attempts, secret_code, guess, continue_game);
+        game_over_message();
     }
 
-    printf("SECRET CODE SET TO: %s\n", secret_code);
-
-    intro_message(attempts);
-
-    play_round(attempts, secret_code, guess, continue_game);
-
-    game_over_message();
-    // Round #
-        // If well place piece (digit in the correct index place)
-            // Add to well place piece count
-        // If digit is part of the secret code but in the wrong index
-            // Add to misplaced piece count
-        // Print number of well placed pieces and miss placed pieces
-    
     return 0;    
 }
 
@@ -65,7 +51,7 @@ char* generate_random_code()
 
     random_code[CODE_LENGTH + 1] = '\0';
 
-    printf("RANDOM SECRET CODE: %s\n", random_code);
+    //printf("\nRandom secret code: %s\n", random_code);
 
     return random_code;
 }
@@ -75,14 +61,13 @@ int* set_attempts()
     attempts = malloc(sizeof(int) * 100);
     *attempts = 10;
 
-    printf("SET ATTEMPTS TO: %d\n", *attempts);
     return attempts;
 }
 
 int* play_round(int* attempts, char* secret_code, char* guess, int* continue_game)
 {
     *continue_game = YES;
-    
+
     while (*attempts > 0)
     {
         get_guess_code(attempts, guess);
