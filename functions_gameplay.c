@@ -45,11 +45,6 @@ int play_mastermind(int argc, char* argv[])
             // Add to misplaced piece count
         // Print number of well placed pieces and miss placed pieces
     
-    // If guess is correct
-        // Show a congrats message and end program
-    
-    // If guess is not correct and not exceeded max number of attempts
-        // Ask for another guess   
     return 0;    
 }
 
@@ -110,6 +105,32 @@ void compare_code(int* attempts, char* secret_code, char* guess)
     }
     else
     {
+        get_success_rate(secret_code, guess);
         (*attempts)--;
     }
+}
+
+void get_success_rate(char* secret_code, char* guess)
+{
+    int well_placed_count = 0;
+    int misplaced_count = 0;
+    int j;
+    int k;
+
+    for (j = 0; j < CODE_LENGTH; j ++)
+    {   
+        for (k = 0; k < CODE_LENGTH; k++)
+        {
+            if (guess[j] == secret_code[k] && j == k)
+            {
+                well_placed_count++;
+            }
+            if (guess[j] == secret_code[k] && j != k)
+            {
+                misplaced_count++;
+            }
+        }
+    }
+
+    success_rate_message(well_placed_count, misplaced_count);
 }

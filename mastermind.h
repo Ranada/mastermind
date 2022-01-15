@@ -38,6 +38,8 @@ void get_guess_code(int* attempts, char* guess);
 void check_guess(char* guess, int* continue_game);
 void guess_error_message();
 void compare_code(int* attempts, char* secret_code, char* guess);
+void get_success_rate(char* secret_code, char* guess);
+void success_rate_message(int well_placed_count, int misplaced_count);
 void congrats_message(char* secret_code);
 void game_over_message();
 

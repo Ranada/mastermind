@@ -29,7 +29,15 @@ void intro_message(int* attempts)
 
 void guess_error_message()
 {
-    printf("\n* Oops! Your guess must be four non-repeating digits between 0 and 7 (ex: 1357). Try again!\n\n");
+    printf("\n* Oops! Your guess must be four non-repeating digits between 0 and 7 (ex: 1357). Try again!\n");
+    printf("\n--------------------------------------------------------------------------------------------\n\n");
+}
+
+void success_rate_message(int well_placed_count, int misplaced_count)
+{
+    printf("\nWell placed guesses: %i\n", well_placed_count);
+    printf("Close but misplaced guesses: %i\n", misplaced_count);
+    printf("\n--------------------------------------------------------------------------------------------\n\n");
 }
 
 void congrats_message(char* secret_code)
