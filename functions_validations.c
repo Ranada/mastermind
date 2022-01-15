@@ -164,3 +164,18 @@ void check_if_integer(char* user_set_attempts, int length, int* continue_game)
 
     set_attempts(atoi(user_set_attempts));
 }
+
+/* Check guess entered in command line is valid */
+
+void check_guess(char* guess, int* continue_game)
+{
+    int length = strlen(guess);
+
+    check_proper_digits(guess, length, continue_game);
+
+    if (*continue_game == NO)
+        {
+            guess_error_message();
+            return;
+        }
+}

@@ -24,7 +24,15 @@ int play_mastermind(int argc, char* argv[])
     printf("SECRET CODE SET TO: %s\n", secret_code);
 
     intro_message(attempts);
+
     get_guess_code(attempts, guess);
+    check_guess(guess, continue_game);
+
+    if (*continue_game == NO)
+    {
+        get_guess_code(attempts, guess);
+    }
+    
     compare_code(attempts, secret_code, guess);
 
     
@@ -89,7 +97,7 @@ void set_attempts(int user_set_attempts)
 
 void get_guess_code(int* attempts, char* guess)
 {
-    printf("Attempts left: %i\n\n", *attempts);
+    printf("Attempts left: %i\n", *attempts);
     printf("Enter your four digit guess (pick non-repeating numbers between 0 and 7):\n");
     scanf("%s", guess);
 }

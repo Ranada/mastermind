@@ -7,12 +7,12 @@ void game_over_message()
 
 void c_flag_error_message()
 {
-    printf("\nOops! Your command line entry after the '-c' flag must be four non-repeating digits between 0 and 7 (ex: 1357).\n\n");
+    printf("\n* Oops! Your command line entry after the '-c' flag must be four non-repeating digits between 0 and 7 (ex: 1357).\n\n");
 }
 
 void t_flag_error_message()
 {
-    printf("\nOops! Your command line entry after the '-t' flag must an integer greater than 0.\n\n");
+    printf("\n* Oops! Your command line entry after the '-t' flag must an integer greater than 0.\n\n");
 }
 
 void intro_message(int* attempts)
@@ -25,6 +25,11 @@ void intro_message(int* attempts)
     printf("                         Can you guess what the secret code is?                                \n\n");
     printf("                              Number of tries available: %i                                    \n\n", *attempts);
     printf("--------------------------------------------------------------------------------------------\n\n");
+}
+
+void guess_error_message()
+{
+    printf("\n* Oops! Your guess must be four non-repeating digits between 0 and 7 (ex: 1357). Try again!\n\n");
 }
 
 void congrats_message(char* secret_code)

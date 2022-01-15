@@ -15,7 +15,7 @@
 
 /* Global Variables */
 char* secret_code;
-char* guess_code;
+char* guess;
 int* attempts;
 int* continue_game;
 
@@ -35,6 +35,8 @@ void t_flag_error_message();
 void set_attempts(int user_set_attempts);
 void intro_message(int* attempts);
 void get_guess_code(int* attempts, char* guess);
+void check_guess(char* guess, int* continue_game);
+void guess_error_message();
 void compare_code(int* attempts, char* secret_code, char* guess);
 void congrats_message(char* secret_code);
 void game_over_message();
