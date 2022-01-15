@@ -1,6 +1,6 @@
 # Mastermind Game
 
-my_mastermind.c
+mastermind.c
 
 Original author: Neil Ranada
 
@@ -12,9 +12,12 @@ You can play by yourself against a **random auto-magically generated secret code
 
 ## How to install
 
-You can download the project folder and files manually to your computer or fork the Github repo at: 
+- You can download the project folder and files manually to your computer or fork the Github repo at: 
 https://github.com/Ranada/mastermind_game
-
+- Or through your terminal, clone this repository: `git clone https://github.com/Ranada/mastermind_game`
+- Go to the directory containing this project: `cd mastermind_game`
+- Check to see you have a GCC compiler installed: `gcc --version` (if not installed, consider using Homebrew method: https://formulae.brew.sh/formula/gcc)
+- Compile automatically using the makefile: `make` or manually `gcc -Wall -Wextra -Werror *.c -o play_mastermind`
 
 ## How to play
 
