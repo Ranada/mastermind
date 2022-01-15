@@ -17,11 +17,11 @@ https://github.com/Ranada/mastermind_game
 - Or through your terminal, clone this repository: `git clone https://github.com/Ranada/mastermind_game`
 - Go to the directory containing this project: `cd mastermind_game`
 - Check to see you have a GCC compiler installed: `gcc --version` (if not installed, consider using Homebrew method: https://formulae.brew.sh/formula/gcc)
-- Compile automatically using the makefile: `make` or manually `gcc -Wall -Wextra -Werror *.c -o play_mastermind`
+- Compile automatically using the makefile using `make` or manually `gcc -Wall -Wextra -Werror *.c -o play_mastermind`
 
 ## How to play
 
-### To play by yourself
+### To play against a randomly generated secret code
 
 - In the command line type `./play_mastermind`
 - Enter your four digit guess (using numbers between 0 and 7) in the command line until you run out of attempts

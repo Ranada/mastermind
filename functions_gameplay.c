@@ -18,7 +18,6 @@ int play_mastermind(int argc, char* argv[])
     {
         intro_message(attempts);
         play_round(attempts, secret_code, guess, continue_game);
-        game_over_message();
     }
 
     return 0;    
@@ -104,6 +103,11 @@ void compare_code(int* attempts, char* secret_code, char* guess)
     {
         get_success_rate(secret_code, guess);
         (*attempts)--;
+
+        if (*attempts == 0)
+        {
+            game_over_message();
+        }
     }
 }
 
