@@ -1,10 +1,5 @@
 #include "mastermind.h"
 
-void game_over_message()
-{
-    printf("Game Over.\n");
-}
-
 void c_flag_error_message()
 {
     printf("\n* Oops! Your command line entry after the '-c' flag must be four non-repeating digits between 0 and 7 (ex: 1357).\n\n");
@@ -46,5 +41,16 @@ void congrats_message(char* secret_code)
     printf("                                     CONGRATULATIONS!                                          \n\n");
     printf("                          You correctly guessed the secret code:                               \n\n");
     printf("                                           %s                                                  \n\n", secret_code);
+    printf("********************************************************************************************\n\n");
+}
+
+void game_over_message()
+{
+    printf("\n********************************************************************************************\n\n");
+    printf("                                        GAME OVER                                              \n\n");
+    printf("                                   The secret code was:                                        \n\n");
+    printf("                                           %s                                                \n\n\n", secret_code);
+    printf(" - To play again against a randomly generated secret code enter: ./play_mastermind             \n\n");
+    printf(" - To play custom settings, enter and change the numbers in: ./play_mastermind -c 1234 -t 10   \n\n");
     printf("********************************************************************************************\n\n");
 }

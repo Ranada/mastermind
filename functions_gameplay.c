@@ -25,7 +25,7 @@ int play_mastermind(int argc, char* argv[])
 
     intro_message(attempts);
 
-    while (attempts > 0)
+    while (*attempts > 0)
     {
         get_guess_code(attempts, guess);
         check_guess(guess, continue_game);
@@ -38,6 +38,7 @@ int play_mastermind(int argc, char* argv[])
         compare_code(attempts, secret_code, guess);
     }
 
+    game_over_message();
     // Round #
         // If well place piece (digit in the correct index place)
             // Add to well place piece count
