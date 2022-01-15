@@ -34,6 +34,7 @@ void check_if_integer(char* user_set_attempts, int length, int* continue_game);
 void t_flag_error_message();
 int* set_attempts();
 void intro_message(int* attempts);
+int* play_round(int* attempts, char* secret_code, char* guess, int* continue_game);
 void get_guess_code(int* attempts, char* guess);
 void check_guess(char* guess, int* continue_game);
 void guess_error_message();

@@ -25,18 +25,7 @@ int play_mastermind(int argc, char* argv[])
 
     intro_message(attempts);
 
-    while (*attempts > 0)
-    {
-        get_guess_code(attempts, guess);
-        check_guess(guess, continue_game);
-
-        if (*continue_game == NO)
-        {
-            get_guess_code(attempts, guess);
-        }
-        
-        compare_code(attempts, secret_code, guess);
-    }
+    play_round(attempts, secret_code, guess, continue_game);
 
     game_over_message();
     // Round #
@@ -88,6 +77,28 @@ int* set_attempts()
 
     printf("SET ATTEMPTS TO: %d\n", *attempts);
     return attempts;
+}
+
+int* play_round(int* attempts, char* secret_code, char* guess, int* continue_game)
+{
+    *continue_game = YES;
+    
+    while (*attempts > 0)
+    {
+        get_guess_code(attempts, guess);
+        check_guess(guess, continue_game);
+
+        if (*continue_game == NO)
+        {
+            play_round(attempts, secret_code, guess, continue_game);
+        }
+        else
+        {
+            compare_code(attempts, secret_code, guess);
+        }
+    }
+
+    return 0;
 }
 
 void get_guess_code(int* attempts, char* guess)
