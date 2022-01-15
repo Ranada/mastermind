@@ -25,18 +25,18 @@ int play_mastermind(int argc, char* argv[])
 
     intro_message(attempts);
 
-    get_guess_code(attempts, guess);
-    check_guess(guess, continue_game);
-
-    if (*continue_game == NO)
+    while (attempts > 0)
     {
         get_guess_code(attempts, guess);
-    }
-    
-    compare_code(attempts, secret_code, guess);
+        check_guess(guess, continue_game);
 
-    
-    
+        if (*continue_game == NO)
+        {
+            get_guess_code(attempts, guess);
+        }
+        
+        compare_code(attempts, secret_code, guess);
+    }
 
     // Round #
         // If well place piece (digit in the correct index place)
@@ -108,5 +108,9 @@ void compare_code(int* attempts, char* secret_code, char* guess)
     {
         congrats_message(secret_code);
         *attempts = 0;
+    }
+    else
+    {
+        (*attempts)--;
     }
 }
