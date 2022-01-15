@@ -32,7 +32,7 @@ void check_t_flag(int argc, char* argv[], int* continue_game);
 void check_t_argument(char* argv[], int i, int* continue_game);
 void check_if_integer(char* user_set_attempts, int length, int* continue_game);
 void t_flag_error_message();
-void set_attempts(int user_set_attempts);
+int* set_attempts();
 void intro_message(int* attempts);
 void get_guess_code(int* attempts, char* guess);
 void check_guess(char* guess, int* continue_game);

@@ -2,15 +2,15 @@
 
 int play_mastermind(int argc, char* argv[])
 {   
-    int* attempts;
+    //int* attempts;
     char* guess;
     int* continue_game;
 
-    attempts = malloc(sizeof(int) * 1);
+    //attempts = malloc(sizeof(int) * 100);
     guess = malloc(sizeof(char) * 5);
     continue_game = malloc(sizeof(int) * 1);
     
-    *attempts = 10;
+    attempts = set_attempts();
     secret_code = generate_random_code();
     *continue_game = YES;
 
@@ -85,14 +85,13 @@ char* generate_random_code()
     return random_code;
 }
 
-void set_attempts(int user_set_attempts)
+int* set_attempts()
 {
-    attempts = malloc(sizeof(int));
+    attempts = malloc(sizeof(int) * 100);
     *attempts = 10;
 
-    *attempts = user_set_attempts;
-
     printf("SET ATTEMPTS TO: %d\n", *attempts);
+    return attempts;
 }
 
 void get_guess_code(int* attempts, char* guess)

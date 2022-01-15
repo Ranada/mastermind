@@ -162,7 +162,12 @@ void check_if_integer(char* user_set_attempts, int length, int* continue_game)
             }
         }
 
-    set_attempts(atoi(user_set_attempts));
+    int* convert_char_attempts;
+    convert_char_attempts = malloc(sizeof(int) * length);
+    *convert_char_attempts = atoi(user_set_attempts);
+
+    //set_attempts(atoi(user_set_attempts));
+    attempts = convert_char_attempts;
 }
 
 /* Check guess entered in command line is valid */
