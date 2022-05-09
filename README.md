@@ -29,6 +29,6 @@ https://github.com/Ranada/mastermind_game
 ### To play with custom settings
 
 - To set only the custom four digit code, add a "-c" flag add a four digit number (using non-repeatind numbers between 0 and 7): `./play_mastermind -c 1234` 
-- To set only set the number of attempts add a "-t" flag and add the desired number of attempts: `./my_mastermind -t 20`
+- To set only the number of attempts add a "-t" flag and add the desired number of attempts: `./my_mastermind -t 20`
 - To set both the secret code and number of attempts a "-c" and "-t" flag and update the numbers in the example: `./play_mastermind -c 1234 -t 10`
 - The player enters a four digit guess (using numbers between 0 and 7) in the command line until they run out of attempts
