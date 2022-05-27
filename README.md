@@ -12,6 +12,10 @@ You can play by yourself against a **random auto-magically generated secret code
 
 <img src="./images/mastermind-1.png" >
 
+<img src="./images/mastermind-2.png" >
+
+<img src="./images/mastermind-5.png" >
+
 ## How to install
 
 - You can download the project folder and files manually to your computer or fork the Github repo at:
