@@ -10,7 +10,7 @@ You can play by yourself against a **random auto-magically generated secret code
 
 **Or, set a custom four digit code** using non-repeating numbers between 0 and 7 and **set the number of attempts** available to a player (default is 10 attempts).
 
-<img src="./images/mastermind-1.png" width="50%">
+<img src="./images/mastermind-1.png" >
 
 ## How to install
 
