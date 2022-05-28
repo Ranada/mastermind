@@ -31,7 +31,7 @@ void check_c_flag(int argc, char* argv[], int* continue_game)
     {
         char first_char = argv[i][0];
         char second_char = argv[i][1];
-        
+
         if (first_char == '-' && second_char == 'c')
         {
             check_c_argument(argv, i, continue_game);
@@ -52,7 +52,7 @@ void check_c_argument(char* argv[], int i, int* continue_game)
     else
     {
         int c_flag_arg_length = strlen(c_flag_arg);
-        
+
         check_proper_digits(c_flag_arg, c_flag_arg_length, continue_game);
     }
 
@@ -76,7 +76,7 @@ void check_proper_digits(char* string_input, int length, int* continue_game)
         for (i = 0; i < length; i++)
         {
             char ch = string_input[i];
-            
+
             if (ch < '0' || ch > '7')
             {
                 *continue_game = NO;
@@ -118,7 +118,7 @@ void check_t_flag(int argc, char* argv[], int* continue_game)
     {
         char first_char = argv[i][0];
         char second_char = argv[i][1];
-        
+
         if (first_char == '-' && second_char == 't')
         {
             check_t_argument(argv, i, continue_game);
@@ -139,7 +139,7 @@ void check_t_argument(char* argv[], int i, int* continue_game)
     else
     {
         int t_flag_arg_length = strlen(t_flag_arg);
-    
+
         check_if_integer(t_flag_arg, t_flag_arg_length, continue_game);
     }
 }
@@ -148,13 +148,13 @@ void check_if_integer(char* user_set_attempts, int length, int* continue_game)
 {
     int i;
     int* convert_char_attempts;
-    
+
     convert_char_attempts = malloc(sizeof(int) * length);
 
         for (i = 0; i < length; i++)
         {
             char ch = user_set_attempts[i];
-            
+
             if (ch < '0' || ch > '9')
             {
                 *continue_game = NO;

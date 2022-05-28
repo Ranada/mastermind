@@ -1,13 +1,13 @@
 #include "mastermind.h"
 
 int play_mastermind(int argc, char* argv[])
-{   
+{
     char* guess;
     int* continue_game;
 
     guess = malloc(sizeof(char) * 5);
     continue_game = malloc(sizeof(int) * 1);
-    
+
     attempts = set_attempts();
     secret_code = generate_random_code();
     *continue_game = YES;
@@ -20,7 +20,15 @@ int play_mastermind(int argc, char* argv[])
         play_round(attempts, secret_code, guess, continue_game);
     }
 
-    return 0;    
+    free(guess);
+    free(continue_game);
+    free(attempts);
+
+    guess = NULL;
+    continue_game = NULL;
+    attempts = NULL;
+
+    return 0;
 }
 
 char* generate_random_code()
@@ -49,8 +57,6 @@ char* generate_random_code()
     }
 
     random_code[CODE_LENGTH + 1] = '\0';
-
-    //printf("\nRandom secret code: %s\n", random_code);
 
     return random_code;
 }
@@ -119,7 +125,7 @@ void get_success_rate(char* secret_code, char* guess)
     int k;
 
     for (j = 0; j < CODE_LENGTH; j ++)
-    {   
+    {
         for (k = 0; k < CODE_LENGTH; k++)
         {
             if (guess[j] == secret_code[k] && j == k)
